@@ -1,0 +1,25 @@
+// Global text styling 
+
+// Headings
+h1 {
+	color: $c-blue;
+}
+
+// Links 
+a {
+	text-decoration: none;
+}
+
+
+// Text Color Classes
+.text-blue {
+	color: $c-blue;
+}
+
+.text-green {
+	color: $c-green;
+}
+
+.text-red {
+	color: $t-red;
+}
