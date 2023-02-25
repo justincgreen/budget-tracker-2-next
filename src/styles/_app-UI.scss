@@ -1,4 +1,26 @@
 // App UI 
-.App {
+.main {
+	overflow: hidden;
+}
+
+.page {
+	&__wrapper {
+		background-color: $c-black;
+		min-height: 100vh;
+		position: relative;
+		z-index: 2;
+		transition: all 0.3s ease;
+		
+		&.is-active {
+			transform: translateX(200px);
+			
+			@media(max-width: 767px) {
+				transform: translateX(50%);
+			}
+		}
+	}
 	
+	.section__content {
+		min-height: 100vh;
+	}
 }

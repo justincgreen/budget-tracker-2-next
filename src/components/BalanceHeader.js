@@ -1,7 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import GlobalContext from '@/context/GlobalContext';
 import Navicon from './Navicon';
 
 const BalanceHeader = () => {
+	const { globalBalance, setGlobalBalance } = useContext(GlobalContext);
+	
 	useEffect(() => {
 		const counter = document.querySelector('.animate-number');
 		const speed = 300;
@@ -26,7 +29,7 @@ const BalanceHeader = () => {
 		<div className="c-app-header">
 			<Navicon />
 			<h1 className="c-app-header__page-title" >Balance</h1>
-			<h2 className="c-app-header__balance-amount animate-number" amount="2000">0</h2>
+			<h2 className="c-app-header__balance-amount animate-number" amount={globalBalance}>0</h2>
 		</div>
 	)
 }

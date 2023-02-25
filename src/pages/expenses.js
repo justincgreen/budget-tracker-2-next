@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import Link from 'next/link';
+import Navigation from '@/components/Navigation';
 
 // Components
 import ExpensesHeader from '@/components/ExpensesHeader';
@@ -14,10 +15,12 @@ export default function Expenses() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			
-			<main>
-				<ExpensesHeader />
-				<Link href="/">Home</Link>
-				Expense Page
+			<main className="main">
+				<Navigation />
+				<div className="page__wrapper">
+					<ExpensesHeader />				
+					Expense Page
+				</div>
 			</main>
 		</>
 	)

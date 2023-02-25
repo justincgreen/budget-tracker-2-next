@@ -1,11 +1,22 @@
 // Navigation component
 .c-navigation {
-	width: 20%;
+	background-color: #fff;
 	min-height: 100vh;
 	padding: 2em;
-	border-right: 1px solid #fff;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	
+	ul {
+		li {
+			margin-bottom: 10px;
+		}
+	}
 	
 	a {
-		color: #fff;
+		color: #000;
+		padding: 10px 10px 10px 0;
 	}
 }

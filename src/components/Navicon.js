@@ -1,7 +1,9 @@
 const Navicon = () => {
 	const toggleNavigation = (e) => {
 		const navicon = e.target.closest('.c-navicon');
+		const pageWrapper = document.querySelector('.page__wrapper');
 		navicon.classList.toggle('is-active');
+		pageWrapper.classList.toggle('is-active');
 	}
 	
 	return (
