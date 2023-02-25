@@ -4,7 +4,9 @@ import GlobalContext from '@/context/GlobalContext';
 import Head from 'next/head'
 
 // Components
+import BalanceHeader from '@/components/BalanceHeader';
 import Header from '@/components/Header';
+import Navigation from '@/components/Navigation';
 import AddExpenseForm from '@/components/AddExpenseForm';
 import ButtonGroup from '@/components/ButtonGroup';
 
@@ -21,8 +23,10 @@ export default function Home() {
       </Head>
       
       <main>
-        <Header />
-        <ButtonGroup />        
+        {/* <Header /> */}
+        {/* <ButtonGroup />   */}                     
+        <BalanceHeader />
+        <Navigation /> 
         
         {
           addExpenseForm && <AddExpenseForm />

@@ -17,12 +17,12 @@
 		display: flex;
 		justify-content: center;
 		gap: 2em;
-		margin-top: -55px;
+		//margin-top: -55px;
 		
 		
 		@media(max-width: $bp-small) {
 			display: block;
-			margin: -40px 20px 0 20px;
+			//margin: -40px 20px 0 20px;
 		}
 	}
 	

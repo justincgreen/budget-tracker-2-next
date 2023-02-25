@@ -1,0 +1,19 @@
+// App Header Component 
+.c-app-header {
+	padding: 1em;
+	background-image: linear-gradient(to right, #16c4fe, #119ff3);
+	
+	&__page-title {
+		text-align: center;
+		color: #fff;
+		font-size: 2em;
+		font-weight: 100;
+	}
+	
+	&__balance-amount {
+		text-align: center;
+		color: #fff;
+		font-size: 3em;
+		font-weight: 200;
+	}
+}
