@@ -30,8 +30,11 @@ export default function Home() {
         
         <div className="page__wrapper">
           <BalanceHeader />
-          <section className="section__content">
-            Content
+          
+          <section className="section__container">
+            <div className="section__content">
+              Content
+            </div>
           </section>
         </div>
         

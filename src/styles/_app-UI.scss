@@ -18,9 +18,20 @@
 				transform: translateX(50%);
 			}
 		}
-	}
+	}		
+}
+
+.section__container {
+	width: 1200px;
+	margin: 0 auto;
 	
-	.section__content {
-		min-height: 100vh;
+	@media(max-width: 767px) {
+		width: auto;
+		margin: 0 20px;
 	}
+}
+
+.section__content {
+	min-height: 100vh;
+	padding-top: 40px;
 }

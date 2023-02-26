@@ -28,8 +28,8 @@ const BalanceHeader = () => {
 	return (
 		<div className="c-app-header">
 			<Navicon />
-			<h1 className="c-app-header__page-title" >Balance</h1>
-			<h2 className="c-app-header__balance-amount animate-number" amount={globalBalance}>0</h2>
+			<h1 className="c-app-header__page-title">Balance</h1>
+			<h2 className="c-app-header__amount-title animate-number" amount={globalBalance}>0</h2>
 		</div>
 	)
 }

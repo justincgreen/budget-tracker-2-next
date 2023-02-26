@@ -18,8 +18,13 @@ export default function Expenses() {
 			<main className="main">
 				<Navigation />
 				<div className="page__wrapper">
-					<ExpensesHeader />				
-					Expense Page
+					<ExpensesHeader />
+					
+					<section className="section__container">
+						<section className="section__content">
+							Expense Page
+						</section>
+					</section>
 				</div>
 			</main>
 		</>
