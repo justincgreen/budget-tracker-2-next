@@ -1,7 +1,18 @@
 // Amount Block Component 
 .c-amount-block {
 	padding: 1em;
-	background-image: linear-gradient(to right, #16c4fe, #119ff3);
+	background: #16c4fe;
+	background: linear-gradient(to right, #16c4fe, #119ff3);
+	
+	&--income {
+		background: #bee83c;
+		background: linear-gradient(90deg, #bee83c 0%, #00be09 100%);
+	}
+	
+	&--expenses {
+		background: #ff8181;
+		background: linear-gradient(90deg, #ff8181 0%, #ff4e4e 100%);
+	}
 	
 	&__page-title {
 		text-align: center;

@@ -26,7 +26,7 @@ const ExpensesBlock = () => {
 	},[]);
 	
 	return (
-		<div className="c-amount-block">			
+		<div className="c-amount-block c-amount-block--expenses">			
 			<h1 className="c-amount-block__page-title">Expenses</h1>
 			<h2 className="c-amount-block__amount-title animate-number" amount={globalExpenses}>0</h2>
 		</div>

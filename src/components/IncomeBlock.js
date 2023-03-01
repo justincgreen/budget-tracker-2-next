@@ -26,7 +26,7 @@ const IncomeBlock = () => {
 	},[]);
 	
 	return (
-		<div className="c-amount-block">
+		<div className="c-amount-block c-amount-block--income">
 			<h1 className="c-amount-block__page-title">Income</h1>
 			<h2 className="c-amount-block__amount-title animate-number" amount={globalIncome}>0</h2>
 		</div>
