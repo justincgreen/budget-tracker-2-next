@@ -4,7 +4,10 @@ import GlobalContext from '@/context/GlobalContext';
 import Head from 'next/head'
 
 // Components
-import BalanceHeader from '@/components/BalanceHeader';
+import BalanceBlock from '@/components/BalanceBlock';
+import IncomeBlock from '@/components/IncomeBlock';
+import ExpensesBlock from '@/components/ExpensesBlock';
+
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 import AddExpenseForm from '@/components/AddExpenseForm';
@@ -29,7 +32,9 @@ export default function Home() {
         <Navigation /> 
         
         <div className="page__wrapper">
-          <BalanceHeader />
+          <BalanceBlock />
+          <IncomeBlock />
+          <ExpensesBlock />
           
           <section className="section__container">
             <div className="section__content">

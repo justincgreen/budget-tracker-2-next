@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
+import Navicon from '@/components/Navicon';
 
 // Components
-import ExpensesHeader from '@/components/ExpensesHeader';
+import ExpensesBlock from '@/components/ExpensesBlock';
 
 export default function Expenses() {	
 	return (
@@ -16,9 +17,11 @@ export default function Expenses() {
 			</Head>
 			
 			<main className="main">
-				<Navigation />
+				<Navigation />				
+				
 				<div className="page__wrapper">
-					<ExpensesHeader />
+					<Navicon />
+					<ExpensesBlock />
 					
 					<section className="section__container">
 						<section className="section__content">
