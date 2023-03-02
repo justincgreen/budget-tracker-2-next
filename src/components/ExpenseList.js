@@ -19,13 +19,9 @@ const ExpenseList = () => {
 	}
 	
 	return (
-		<div className="c-expense-list">
+		<div className="c-expense-list">			
 			{
-				!displayExpenseForm ? listUpper() : null
-			}			
-			
-			{
-				displayExpenseForm ? <ExpenseForm /> : null
+				displayExpenseForm ? <ExpenseForm /> : listUpper()
 			}		
 		</div>
 	)
