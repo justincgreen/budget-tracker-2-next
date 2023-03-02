@@ -1,0 +1,7 @@
+// Expense List component 
+.c-expense-list {
+	&__upper {
+		display: flex;
+		justify-content: space-between;
+	}
+}

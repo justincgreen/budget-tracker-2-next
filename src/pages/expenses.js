@@ -5,6 +5,7 @@ import Navicon from '@/components/Navicon';
 
 // Components
 import ExpensesBlock from '@/components/ExpensesBlock';
+import ExpenseList from '@/components/ExpenseList';
 
 export default function Expenses() {	
 	return (
@@ -25,7 +26,7 @@ export default function Expenses() {
 					
 					<section className="section__container">
 						<section className="section__content">
-							Expense Page
+							<ExpenseList />
 						</section>
 					</section>
 				</div>
