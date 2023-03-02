@@ -10,11 +10,10 @@ import ExpensesBlock from '@/components/ExpensesBlock';
 
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
-import AddExpenseForm from '@/components/AddExpenseForm';
 import ButtonGroup from '@/components/ButtonGroup';
 
 export default function Home() {
-  const { addExpenseForm, setAddExpenseForm } = useContext(GlobalContext);
+ // const { addExpenseForm, setAddExpenseForm } = useContext(GlobalContext);
   
   return (
     <>
@@ -25,10 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main className="main">
-        {/* <Header /> */}
-        {/* <ButtonGroup />   */}                     
-        
+      <main className="main">                          
         <Navigation /> 
         
         <div className="page__wrapper">
@@ -42,10 +38,6 @@ export default function Home() {
             </div>
           </section>
         </div>
-        
-        {
-          addExpenseForm && <AddExpenseForm />
-        }
       </main>
     </>
   )

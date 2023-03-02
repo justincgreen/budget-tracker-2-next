@@ -8,7 +8,10 @@ export const GlobalProvider = (props) => {
 	const [globalIncome, setGlobalIncome] = useState(5000);
 	const [globalExpenses, setGlobalExpenses] = useState(2000);
 	
+	// Expenses
+	const [displayExpenseForm, setDisplayExpenseForm] = useState(false);
 	const [addExpenseForm, setAddExpenseForm] = useState(false);
+	
 	
 	return (
 		<GlobalContext.Provider value={{
@@ -18,6 +21,8 @@ export const GlobalProvider = (props) => {
 			setGlobalIncome,
 			globalExpenses,
 			setGlobalExpenses,
+			displayExpenseForm,
+			setDisplayExpenseForm,
 			addExpenseForm,
 			setAddExpenseForm
 		}}>
