@@ -7,6 +7,7 @@ const ExpenseForm = () => {
 	const [expenseDescription, setExpenseDescription] = useState('');
 	const [expenseAmount, setExpenseAmount] = useState(0);
 	
+	// Display form logic
 	const handleDisplayForm = () => {
 		setDisplayExpenseForm(!displayExpenseForm);
 	}
@@ -23,9 +24,10 @@ const ExpenseForm = () => {
 	const captureFormData = (e) => {
 		const formInput = document.querySelectorAll('.form__input');
 		
+		// TODO: Create object to store data and push it into another piece of state that manages all transactions
 		e.preventDefault();		
 		formInput.forEach(input => input.value = ''); // Clear input fields on submit
-		//console.log(expenseDescription, expenseAmount);
+		//console.log(expenseDescription, expenseAmount);				
 	}
 	
 	// Render functions - local components
@@ -50,6 +52,7 @@ const ExpenseForm = () => {
 		)
 	}
 	
+	// Main component
 	return (
 		<div className="c-expense-form">
 			{
