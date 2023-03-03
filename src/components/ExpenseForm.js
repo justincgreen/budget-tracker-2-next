@@ -11,6 +11,7 @@ const ExpenseForm = () => {
 		setDisplayExpenseForm(!displayExpenseForm);
 	}
 	
+	// Capture form data functions
 	const captureExpenseDescription = (e) => {
 		setExpenseDescription(e.target.value);
 	}
@@ -19,7 +20,7 @@ const ExpenseForm = () => {
 		setExpenseAmount(e.target.value);
 	}
 	
-	const submitForm = (e) => {
+	const captureFormData = (e) => {
 		const formInput = document.querySelectorAll('.form__input');
 		
 		e.preventDefault();		
@@ -27,7 +28,8 @@ const ExpenseForm = () => {
 		//console.log(expenseDescription, expenseAmount);
 	}
 	
-	const listUpper = () => {
+	// Render functions - local components
+	const renderListUpper = () => {
 		return (
 			<div className="c-expense-list__upper">
 				<h2 className="c-expense-list__title">Add Expense</h2> 
@@ -43,7 +45,7 @@ const ExpenseForm = () => {
 				<input type="text" placeholder="Enter Description" className="form__input form__input--100" onChange={captureExpenseDescription} />
 				<label className="form__label">Amount</label>
 				<input type="number" min="0" placeholder="Enter Amount" className="form__input form__input--100" onChange={captureExpenseAmount} />
-				<button className="button" onClick={submitForm}>Add Expense</button>
+				<button className="button" onClick={captureFormData}>Add Expense</button>
 			</form>
 		)
 	}
@@ -51,7 +53,7 @@ const ExpenseForm = () => {
 	return (
 		<div className="c-expense-form">
 			{
-				listUpper()				
+				renderListUpper()				
 			}
 			{
 				renderForm()
