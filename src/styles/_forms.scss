@@ -1,0 +1,15 @@
+// Forms
+.form {
+	&__label {
+		display: block;
+	}
+	
+	&__input {
+		padding: 10px;
+		margin-bottom: 10px;
+		
+		&--100 {
+			width: 100%;
+		}		
+	}
+}

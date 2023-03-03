@@ -17,11 +17,26 @@ const ExpenseForm = () => {
 		)
 	}
 	
+	const renderForm = () => {
+		return (
+			<form>
+				<label className="form__label">Description</label>
+				<input type="text" placeholder="Enter Description" className="form__input form__input--100" />
+				<label className="form__label">Amount</label>
+				<input type="text" placeholder="Enter Amount" className="form__input form__input--100" />
+				<button className="button">Add Expense</button>
+			</form>
+		)
+	}
+	
 	return (
 		<div className="c-expense-form">
 			{
-				listUpper()
-			}					
+				listUpper()				
+			}
+			{
+				renderForm()
+			}
 		</div>
 	)
 }
