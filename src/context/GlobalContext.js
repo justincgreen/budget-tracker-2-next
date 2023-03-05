@@ -11,6 +11,7 @@ export const GlobalProvider = (props) => {
 	// Expenses
 	const [displayExpenseForm, setDisplayExpenseForm] = useState(false);
 	const [addExpenseForm, setAddExpenseForm] = useState(false);
+	const [transactions, setTransactions] = useState([]);
 	
 	
 	return (
@@ -24,7 +25,9 @@ export const GlobalProvider = (props) => {
 			displayExpenseForm,
 			setDisplayExpenseForm,
 			addExpenseForm,
-			setAddExpenseForm
+			setAddExpenseForm,
+			transactions,
+			setTransactions
 		}}>
 		{props.children}
 		</GlobalContext.Provider>
