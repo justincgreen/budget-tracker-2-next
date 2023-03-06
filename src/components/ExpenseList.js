@@ -35,20 +35,30 @@ const ExpenseList = () => {
 		)
 	}
 	
-	const renderList = () => {
+	const renderTransactions = () => {
 		return (
+			transactions.length < 1 
+			? 
+			'There are currently no expenses'
+			:
 			<ul className="c-expense-list__items">
-				<li className="c-expense-list__item">
-					<span className="c-expense-list__item-timestamp">3/4/23</span>
-					<span className="c-expense-list__item-description">Food</span>
-					<span className="c-expense-list__item-amount">$100</span>
-					<span className="c-expense-list__delete" onClick={deleteExpense}>
-						<DeleteForeverIcon sx={{ color: '#ff4e4e' }} />
-					</span>
-					<span className="c-expense-list__edit" onClick={editExpense}>
-						<EditNotificationsIcon sx={{ color: '#55d4da' }} />
-					</span>					
-				</li>
+				{
+					transactions.map((item) => {
+						return (
+							<li className="c-expense-list__item" key={item.id}>
+								<span className="c-expense-list__item-timestamp">{item.timestamp}</span>
+								<span className="c-expense-list__item-description">{item.description }</span>
+								<span className="c-expense-list__item-amount">${item.amount}</span>	
+								<span className="c-expense-list__delete" onClick={deleteExpense}>
+									<DeleteForeverIcon sx={{ color: '#ff4e4e' }} />
+								</span>
+								<span className="c-expense-list__edit" onClick={editExpense}>
+									<EditNotificationsIcon sx={{ color: '#55d4da' }} />
+								</span>						
+							</li>
+						)
+					})
+				}
 			</ul>
 		)
 	}
@@ -59,7 +69,7 @@ const ExpenseList = () => {
 				displayExpenseForm ? <ExpenseForm /> : renderListUpper()
 			}
 			{
-				!displayExpenseForm && renderList()
+				!displayExpenseForm && renderTransactions()
 			}
 		</div>
 	)

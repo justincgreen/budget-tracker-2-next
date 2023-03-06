@@ -44,7 +44,7 @@ const ExpenseForm = () => {
 			id: generateID(),
 			description: expenseDescription,
 			amount: expenseAmount,
-			date: currentDate()
+			timestamp: currentDate()
 		}
 		
 		const newTransaction = [...transactions, currentTransaction];
