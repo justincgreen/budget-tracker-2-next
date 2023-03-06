@@ -18,8 +18,12 @@ const ExpenseList = () => {
 	}				
 	
 	// Delete & Edit Expenses
-	const deleteExpense = () => {
-		console.log('Deleted');
+	const deleteExpense = (id) => {
+		const filterItems = transactions.filter((element, index) => {
+			return element.id !== id;		  
+		});
+			
+		setTransactions(filterItems);
 	}
 	
 	const editExpense = () => {
@@ -49,7 +53,11 @@ const ExpenseList = () => {
 								<span className="c-expense-list__item-timestamp">{item.timestamp}</span>
 								<span className="c-expense-list__item-description">{item.description }</span>
 								<span className="c-expense-list__item-amount">${item.amount}</span>	
-								<span className="c-expense-list__delete" onClick={deleteExpense}>
+								<span className="c-expense-list__delete" onClick={
+									() => {
+										deleteExpense(item.id)
+									}
+								}>
 									<DeleteForeverIcon sx={{ color: '#ff4e4e' }} />
 								</span>
 								<span className="c-expense-list__edit" onClick={editExpense}>
