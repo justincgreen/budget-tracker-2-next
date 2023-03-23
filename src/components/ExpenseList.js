@@ -15,7 +15,7 @@ const ExpenseList = () => {
 	// Display Expense Form
 	const handleDisplayForm = () => {
 		setDisplayExpenseForm(!displayExpenseForm);
-	}				
+	}
 	
 	// Delete & Edit Expenses
 	const deleteExpense = (id) => {
@@ -34,7 +34,7 @@ const ExpenseList = () => {
 		return (
 			<div className="c-expense-list__upper">
 				<h2 className="c-expense-list__title">Expense List</h2> 
-				<button className="button" onClick={handleDisplayForm}>Add Expense</button>				
+				<button className="button" onClick={handleDisplayForm}>Add Expense</button>						
 			</div>
 		)
 	}
@@ -49,7 +49,7 @@ const ExpenseList = () => {
 				{
 					transactions.map((item) => {
 						return (
-							<li className="c-expense-list__item" key={item.id}>
+							<li className={`c-expense-list__item c-expense-list__item-${item.id}`} key={item.id}>
 								<span className="c-expense-list__item-timestamp">{item.timestamp}</span>
 								<span className="c-expense-list__item-description">{item.description }</span>
 								<span className="c-expense-list__item-amount">${item.amount}</span>	

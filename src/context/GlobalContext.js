@@ -11,7 +11,7 @@ export const GlobalProvider = (props) => {
 	// Expenses
 	const [displayExpenseForm, setDisplayExpenseForm] = useState(false);
 	const [addExpenseForm, setAddExpenseForm] = useState(false);
-	const [transactions, setTransactions] = useState([]);
+	const [transactions, setTransactions] = useState([]);	
 	
 	
 	return (

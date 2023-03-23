@@ -1,5 +1,8 @@
 import { useState, useContext } from 'react';
+import{ generateID } from '../helpers/generateID';
+import{ currentDate } from '../helpers/currentDate';
 import GlobalContext from '@/context/GlobalContext';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const ExpenseForm = () => {
 	const { 
@@ -11,6 +14,8 @@ const ExpenseForm = () => {
 	
 	const [expenseDescription, setExpenseDescription] = useState('');
 	const [expenseAmount, setExpenseAmount] = useState(0);
+	const [expenseSuccessMsg, setExpenseSuccessMsg] = useState(false);
+	const [disableSubmitBtn, setDisableSubmitBtn] = useState(false);
 	
 	// Display form logic
 	const handleDisplayForm = () => {
@@ -19,25 +24,6 @@ const ExpenseForm = () => {
 	
 	// Transactions 
 	//------------------------------
-	// Add date to expense item
-	const currentDate = () => {
-		let today = new Date();
-		const dd = String(today.getDate()).padStart(2, '0');
-		const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-		const yyyy = today.getFullYear();
-		
-		today = mm + '/' + dd + '/' + yyyy;
-		
-		return today;
-	}
-	
-	// Generate Unique ID
-	const generateID = () => {
-		const dateString = Date.now().toString(36); // convert num to base 36 and stringify
-		const randomString = Math.random().toString(36).substring(2, 8); // start at index 2 to skip decimal point
-		return `${dateString}-${randomString}`;
-	}
-	
 	// Add new transaction
 	const handleTransaction = () => {
 		const currentTransaction = {
@@ -50,7 +36,14 @@ const ExpenseForm = () => {
 		const newTransaction = [...transactions, currentTransaction];
 		setTransactions(newTransaction);
 		
-		// TODO: add error handling for form before adding new transaction to transactions array		
+		setExpenseSuccessMsg(true);
+		setDisableSubmitBtn(true);
+		
+		// Remove success message
+		setTimeout(() => {
+			setExpenseSuccessMsg(false);
+			setDisableSubmitBtn(false);
+		},1500);
 	}
 	
 	// Capture form data functions
@@ -63,11 +56,18 @@ const ExpenseForm = () => {
 	}
 	
 	const captureFormData = (e) => {
+		const formDescription = document.querySelector('.form__description');
+		const formAmount = document.querySelector('.form__amount');
 		const formInput = document.querySelectorAll('.form__input');
 		
-		e.preventDefault();		
-		formInput.forEach(input => input.value = ''); // Clear input fields on submit
-		handleTransaction();
+		e.preventDefault();
+		
+		if(formDescription.value === '' || formAmount.value === '') {
+			alert('Enter a expense description and amount');
+		} else {
+			formInput.forEach(input => input.value = ''); // Clear input fields on submit
+			handleTransaction();	
+		}		
 	}
 	
 	// Render functions - local components
@@ -84,10 +84,20 @@ const ExpenseForm = () => {
 		return (
 			<form className="form__add-expense">
 				<label className="form__label">Description</label>
-				<input type="text" placeholder="Enter Description" className="form__input form__input--100" onChange={captureExpenseDescription} />
+				<input type="text" placeholder="Enter Description" className="form__description form__input form__input--100" onChange={captureExpenseDescription} />
 				<label className="form__label">Amount</label>
-				<input type="number" min="0" placeholder="Enter Amount" className="form__input form__input--100" onChange={captureExpenseAmount} />
-				<button className="button" onClick={captureFormData}>Add Expense</button>
+				<input type="number" min="0" placeholder="Enter Amount" className="form__amount form__input form__input--100" onChange={captureExpenseAmount} />
+				{
+					disableSubmitBtn 
+					?
+					<button className="button" disabled>Add Expense</button>
+					:
+					<button className="button" onClick={captureFormData}>Add Expense</button>
+				}
+				
+				{
+					expenseSuccessMsg ? <CheckCircleIcon /> : null
+				}				
 			</form>
 		)
 	}
