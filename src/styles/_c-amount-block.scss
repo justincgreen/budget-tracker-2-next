@@ -6,7 +6,7 @@
 	
 	&--income {
 		background: #bee83c;
-		background: linear-gradient(90deg, #bee83c 0%, #00be09 100%);
+		background: linear-gradient(90deg, #bee83c 0%, #00be09 100%);			
 	}
 	
 	&--expenses {
@@ -26,5 +26,10 @@
 		color: #fff;
 		font-size: 3em;
 		font-weight: 200;
+		transition: all 0.2s ease;
+	}
+	
+	&__amount-edit {
+		text-align: center;
 	}
 }

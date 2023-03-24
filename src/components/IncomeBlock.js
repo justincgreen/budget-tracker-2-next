@@ -2,7 +2,19 @@ import { useEffect, useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 
 const IncomeBlock = () => {
-	const { globalIncome, setGlobalIncome } = useContext(GlobalContext);
+	const { 
+		globalIncome,
+		setGlobalIncome,
+		displayModal,
+		setDisplayModal,
+		displayIncomeForm,
+		setDisplayIncomeForm 
+	} = useContext(GlobalContext);
+	
+	const editIncome = () => {
+		setDisplayModal(true);
+		setDisplayIncomeForm(true);
+	}
 	
 	useEffect(() => {
 		const counters = document.querySelectorAll('.animate-number');
@@ -27,8 +39,11 @@ const IncomeBlock = () => {
 	
 	return (
 		<div className="c-amount-block c-amount-block--income">
-			<h1 className="c-amount-block__page-title">Income</h1>
-			<h2 className="c-amount-block__amount-title animate-number" amount={globalIncome}>0</h2>
+			<h1 className="c-amount-block__page-title">Income</h1>			
+				<h2 className="c-amount-block__amount-title animate-number" amount={globalIncome}>0</h2>
+				<div className="c-amount-block__amount-edit">
+					<button className="button button__edit-income" onClick={editIncome}>Edit</button>
+				</div>
 		</div>
 	)
 }

@@ -4,16 +4,19 @@ const GlobalContext = createContext(null);
 
 export const GlobalProvider = (props) => {
 	// Balances
-	const [globalBalance, setGlobalBalance] = useState(4000);
+	const [globalBalance, setGlobalBalance] = useState(0);
 	const [globalIncome, setGlobalIncome] = useState(5000);
-	const [globalExpenses, setGlobalExpenses] = useState(2000);
+	const [globalExpenses, setGlobalExpenses] = useState(1000);
 	
 	// Expenses
 	const [displayExpenseForm, setDisplayExpenseForm] = useState(false);
 	const [addExpenseForm, setAddExpenseForm] = useState(false);
 	const [transactions, setTransactions] = useState([]);	
 	
-	
+	// Modal
+	const [displayModal, setDisplayModal] = useState(false);
+	const [displayIncomeForm, setDisplayIncomeForm] = useState(false);
+		
 	return (
 		<GlobalContext.Provider value={{
 			globalBalance,
@@ -26,6 +29,10 @@ export const GlobalProvider = (props) => {
 			setDisplayExpenseForm,
 			addExpenseForm,
 			setAddExpenseForm,
+			displayModal,
+			setDisplayModal,
+			displayIncomeForm,
+			setDisplayIncomeForm,
 			transactions,
 			setTransactions
 		}}>

@@ -7,13 +7,14 @@ import Head from 'next/head'
 import BalanceBlock from '@/components/BalanceBlock';
 import IncomeBlock from '@/components/IncomeBlock';
 import ExpensesBlock from '@/components/ExpensesBlock';
+import Modal from '@/components/Modal';
 
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 import ButtonGroup from '@/components/ButtonGroup';
 
 export default function Home() {
- // const { addExpenseForm, setAddExpenseForm } = useContext(GlobalContext);
+ const { displayModal } = useContext(GlobalContext);
   
   return (
     <>
@@ -37,6 +38,10 @@ export default function Home() {
               Content
             </div>
           </section>
+          
+          {
+            displayModal ? <Modal /> : null
+          }
         </div>
       </main>
     </>

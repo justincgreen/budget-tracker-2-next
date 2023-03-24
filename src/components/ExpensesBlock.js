@@ -18,7 +18,7 @@ const ExpensesBlock = () => {
 					counter.innerText = Math.ceil(data + time);
 					setTimeout(animateNumber, 1);
 				}else{
-					counter.innerText = '$' + parseFloat(value).toLocaleString('en', {minimumFractionDigits: 2});					
+					counter.innerText = '$' + parseFloat(value).toLocaleString('en', {minimumFractionDigits: 2});		
 				}		 
 			}			
 			animateNumber();

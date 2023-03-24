@@ -8,6 +8,8 @@ const ExpenseForm = () => {
 	const { 
 		displayExpenseForm, 
 		setDisplayExpenseForm,
+		globalExpenses,
+		setGlobalExpenses,
 		transactions,
 		setTransactions
 	} = useContext(GlobalContext);
@@ -38,8 +40,9 @@ const ExpenseForm = () => {
 		
 		setExpenseSuccessMsg(true);
 		setDisableSubmitBtn(true);
+		//setGlobalExpenses(parseFloat(expenseAmount));
 		
-		// Remove success message
+		// Remove success message & re-enable the submit button
 		setTimeout(() => {
 			setExpenseSuccessMsg(false);
 			setDisableSubmitBtn(false);
