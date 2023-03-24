@@ -3,7 +3,7 @@ import GlobalContext from '@/context/GlobalContext';
 
 const Modal = () => {
 	const { 
-		displayModal,
+    displayModal,
 		setDisplayModal,
 		displayIncomeForm, 
 		setDisplayIncomeForm 
