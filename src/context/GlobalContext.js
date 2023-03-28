@@ -5,7 +5,7 @@ const GlobalContext = createContext(null);
 export const GlobalProvider = (props) => {
 	// Balances
 	const [globalBalance, setGlobalBalance] = useState(0);
-	const [globalIncome, setGlobalIncome] = useState(5000);
+	const [globalIncome, setGlobalIncome] = useState(0);
 	const [globalExpenses, setGlobalExpenses] = useState(1000);
 	
 	// Expenses

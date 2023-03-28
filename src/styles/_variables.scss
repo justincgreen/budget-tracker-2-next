@@ -1,6 +1,7 @@
 // App UI Colors
 $c-blue: #55d4da;
 $c-blue-dark: #0075ad;
+$c-white: #ffffff;
 $c-black: #242424;
 $c-black-light: #353333;
 $c-green: #00a862;
@@ -19,6 +20,10 @@ $font-size-md: 20px;
 $font-size-l: 30px;
 $font-size-xl: 40px;
 $font-size-xxl: 60px;
+
+// Padding 
+$padding-base: 20px;
+$padding-base-half: $padding-base - 10px;
 
 // Breakpoints 
 $bp-small: 767px;

@@ -35,12 +35,12 @@ const IncomeBlock = () => {
 			}
 			animateNumber();
 		});				
-	},[]);
+	},[globalIncome]);
 	
 	return (
 		<div className="c-amount-block c-amount-block--income">
 			<h1 className="c-amount-block__page-title">Income</h1>			
-				<h2 className="c-amount-block__amount-title animate-number" amount={globalIncome}>0</h2>
+				<h2 className="c-amount-block__amount-title animate-number" amount={globalIncome}>{globalIncome}</h2>
 				<div className="c-amount-block__amount-edit">
 					<button className="button button__edit-income" onClick={editIncome}>Edit</button>
 				</div>

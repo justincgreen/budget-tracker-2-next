@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 
 const Modal = () => {
@@ -6,24 +6,52 @@ const Modal = () => {
     displayModal,
 		setDisplayModal,
 		displayIncomeForm, 
-		setDisplayIncomeForm 
+		setDisplayIncomeForm,
+    globalIncome,
+    setGlobalIncome
 	} = useContext(GlobalContext);
+  
+  const [incomeAmount, setIncomeAmount] = useState('');
 	
 	const closeModal = () => {
 		setDisplayModal(false);
 		setDisplayIncomeForm(false);
 	}
+  
+  // Income Form
+  const captureIncomeAmount = (e) => {
+    setIncomeAmount(parseFloat(e.target.value));
+  }
+  
+  const saveGlobalAmount = () => {
+    if(isNaN(incomeAmount) || incomeAmount === 0 || incomeAmount === '') {
+      alert()      
+    } 
+    else {
+      setGlobalIncome(Math.floor(incomeAmount*100)/100); // account for two decimals places
+      setDisplayIncomeForm(false);
+      setDisplayModal(false);
+    }  
+  }
 	
 	return (
 		<div className="c-modal">
 			<h1>Modal</h1>
-			<div>
-				<button className="button" onClick={closeModal}>Close Modal</button>
-			</div>
+			<div className="c-modal__wrapper">
+				<button className="button button__close-modal" onClick={closeModal}>Close</button>			
 			
-			{
-				displayIncomeForm && <h2>Edit Income Form</h2>
-			}
+			  {
+				  displayIncomeForm
+          ?
+          <div>
+            <h2>Income Amount</h2>
+            <input type="number" min="0" placeholder="Enter Amount" className="c-modal__income-form" onChange={captureIncomeAmount} />
+            <button className="button" onClick={saveGlobalAmount}>Save</button>
+          </div>
+          :
+          null
+			  }
+      </div>
 		</div>
 	)
 }
