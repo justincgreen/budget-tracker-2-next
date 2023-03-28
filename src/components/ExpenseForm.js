@@ -99,7 +99,16 @@ const ExpenseForm = () => {
 				}
 				
 				{
-					expenseSuccessMsg ? <CheckCircleIcon /> : null
+					expenseSuccessMsg 
+          ? 
+          <div className="form__success-message">
+            <div className="form__success-message-icon">
+              <CheckCircleIcon sx={{ color: '#03e084', fontSize: '100px' }} />
+              <h2>Success</h2>
+            </div>
+          </div>
+          : 
+          null
 				}				
 			</form>
 		)
