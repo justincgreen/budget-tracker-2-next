@@ -14,7 +14,11 @@ import Navigation from '@/components/Navigation';
 import ButtonGroup from '@/components/ButtonGroup';
 
 export default function Home() {
- const { displayModal, globalIncome, setGlobalIncome } = useContext(GlobalContext);
+ const { 
+   displayModal,
+   globalIncome,
+   setGlobalIncome 
+ } = useContext(GlobalContext);
  
 useEffect(() => {
   // Local storage hydration
@@ -46,9 +50,11 @@ useEffect(() => {
         <Navigation /> 
         
         <div className="page__wrapper">
-          <BalanceBlock />
-          <IncomeBlock />
-          <ExpensesBlock />
+          <div className="page__blocks-wrapper">
+            <BalanceBlock />
+            <IncomeBlock />
+            <ExpensesBlock />
+          </div>
           
           <section className="section__container">
             <div className="section__content">

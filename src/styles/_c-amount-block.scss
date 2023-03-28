@@ -1,8 +1,13 @@
 // Amount Block Component 
 .c-amount-block {
+  flex-basis: 33.3%;
 	padding: .5em;
 	background: #16c4fe;
 	background: linear-gradient(to right, #16c4fe, #119ff3);
+  
+  @media(max-width: $bp-small) {
+    flex-basis: 100%;
+  }
 	
 	&--income {
 		background: #bee83c;

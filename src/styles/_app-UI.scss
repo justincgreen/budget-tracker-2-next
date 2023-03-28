@@ -19,7 +19,12 @@
 				transform: translateX(50%);
 			}
 		}
-	}		
+	}	
+  
+  &__blocks-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }	
 }
 
 .section__container {
