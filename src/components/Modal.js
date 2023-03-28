@@ -31,12 +31,12 @@ const Modal = () => {
       setGlobalIncome(Math.floor(incomeAmount*100)/100); // account for two decimals places
       setDisplayIncomeForm(false);
       setDisplayModal(false);
+      localStorage.setItem('local-income-amount', JSON.stringify(Math.floor(incomeAmount*100)/100));
     }  
   }
 	
 	return (
 		<div className="c-modal">
-			<h1>Modal</h1>
 			<div className="c-modal__wrapper">
 				<button className="button button__close-modal" onClick={closeModal}>Close</button>			
 			

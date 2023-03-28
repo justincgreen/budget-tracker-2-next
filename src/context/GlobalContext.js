@@ -2,7 +2,7 @@ import { useState, createContext } from 'react';
 
 const GlobalContext = createContext(null);
 
-export const GlobalProvider = (props) => {
+export const GlobalProvider = (props) => {    
 	// Balances
 	const [globalBalance, setGlobalBalance] = useState(0);
 	const [globalIncome, setGlobalIncome] = useState(0);

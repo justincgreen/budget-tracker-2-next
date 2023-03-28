@@ -7,9 +7,12 @@
 	
 	&__items {
 		list-style: none;
+    display: flex;
+    flex-wrap: wrap-reverse;
 	}
 	
 	&__item {
+    flex-basis: 100%;
 		margin-top: 10px;
 		padding: 12px 30px 12px 10px;
 		background-color: $c-black-light;

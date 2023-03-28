@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 
 import Head from 'next/head'
@@ -14,7 +14,24 @@ import Navigation from '@/components/Navigation';
 import ButtonGroup from '@/components/ButtonGroup';
 
 export default function Home() {
- const { displayModal } = useContext(GlobalContext);
+ const { displayModal, globalIncome, setGlobalIncome } = useContext(GlobalContext);
+ 
+useEffect(() => {
+  // Local storage hydration
+  //-----------------------------
+  
+  // Global Income Amount
+   const getLocalIncomeAmount = () => {
+     const data = localStorage.getItem('local-income-amount');
+     if(data) {
+       setGlobalIncome(JSON.parse(data));
+     }else {
+       setGlobalIncome(0);
+     }
+   }
+   
+   getLocalIncomeAmount();
+ }, []);
   
   return (
     <>
