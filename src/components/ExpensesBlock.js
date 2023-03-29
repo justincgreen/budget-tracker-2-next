@@ -23,7 +23,7 @@ const ExpensesBlock = () => {
 			}			
 			animateNumber();
 		});		
-	},[]);
+	},[globalExpenses]);
 	
 	return (
 		<div className="c-amount-block c-amount-block--expenses">			
