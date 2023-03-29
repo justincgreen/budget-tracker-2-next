@@ -17,7 +17,9 @@ export default function Home() {
  const { 
    displayModal,
    globalIncome,
-   setGlobalIncome 
+   setGlobalIncome,
+   globalExpenses,
+   setGlobalExpenses 
  } = useContext(GlobalContext);
  
 useEffect(() => {
@@ -34,7 +36,18 @@ useEffect(() => {
      }
    }
    
+   // Global Expenses Amount
+    const getLocalExpensesAmount = () => {
+      const data = localStorage.getItem('local-expenses-amount');
+      if(data) {
+        setGlobalExpenses(JSON.parse(data));
+      }else {
+        setGlobalIncome(0);
+      }
+    }
+   
    getLocalIncomeAmount();
+   getLocalExpensesAmount();
  }, []);
   
   return (

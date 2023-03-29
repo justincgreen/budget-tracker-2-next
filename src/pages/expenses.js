@@ -1,3 +1,6 @@
+import { useEffect, useContext } from 'react';
+import GlobalContext from '@/context/GlobalContext';
+
 import Head from 'next/head';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
@@ -7,7 +10,29 @@ import Navicon from '@/components/Navicon';
 import ExpensesBlock from '@/components/ExpensesBlock';
 import ExpenseList from '@/components/ExpenseList';
 
-export default function Expenses() {	
+export default function Expenses() {
+  const { 
+     globalExpenses,
+     setGlobalExpenses 
+   } = useContext(GlobalContext);
+   
+  useEffect(() => {
+    // Local storage hydration
+    //-----------------------------
+    // Global Expenses Amount
+    const getLocalExpensesAmount = () => {
+      const data = localStorage.getItem('local-expenses-amount');
+      
+      if(data) {
+        setGlobalExpenses(JSON.parse(data));
+      }else {
+        setGlobalIncome(0);
+      }
+    }
+  
+    getLocalExpensesAmount();
+  }, []);
+   
   return (
   <>
     <Head>

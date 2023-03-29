@@ -48,6 +48,9 @@ const ExpenseForm = () => {
     const generateGlobalExpensesAmount =  parseFloat(expenseAmount) + parseFloat(globalExpenses);
     
 		setGlobalExpenses(generateGlobalExpensesAmount.toFixed(2)); // convert to string with two decimal places
+    
+    //Add generated global expenses amount to local storage
+    localStorage.setItem('local-expenses-amount', JSON.stringify(generateGlobalExpensesAmount.toFixed(2)));
 		
 		// Remove success message & re-enable the submit button
 		setTimeout(() => {
