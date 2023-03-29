@@ -53,8 +53,8 @@ const ExpenseList = () => {
 							<li className={`c-expense-list__item c-expense-list__item-${item.id}`} key={item.id}>
 								<span className="c-expense-list__item-timestamp">{item.timestamp}</span>
 								<span className="c-expense-list__item-description">{item.description }</span>
-								{/* <span className="c-expense-list__item-amount">${parseFloat(item.amount).toFixed(2)}</span> */}
-								<span className="c-expense-list__item-amount">${convertNumber(item.amount)}</span>
+								<span className="c-expense-list__item-amount">${parseFloat(item.amount).toFixed(2)}</span>
+								{/* <span className="c-expense-list__item-amount">${convertNumber(item.amount)}</span> */}
 								<span className="c-expense-list__delete" onClick={
 									() => {
 										deleteExpense(item.id)

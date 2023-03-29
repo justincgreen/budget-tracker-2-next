@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import{ generateID } from '../helpers/generateID';
 import{ currentDate } from '../helpers/currentDate';
-import{ convertNumber } from '../helpers/convertNumber';
 import GlobalContext from '@/context/GlobalContext';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
@@ -15,6 +14,7 @@ const ExpenseForm = () => {
 		setTransactions
 	} = useContext(GlobalContext);
 	
+  // Isolated Component States
 	const [expenseDescription, setExpenseDescription] = useState('');
 	const [expenseAmount, setExpenseAmount] = useState(0);
 	const [expenseSuccessMsg, setExpenseSuccessMsg] = useState(false);
@@ -36,12 +36,18 @@ const ExpenseForm = () => {
 			timestamp: currentDate()
 		}
 		
+    // Add new transaction to main transaction array
 		const newTransaction = [...transactions, currentTransaction];
 		setTransactions(newTransaction);
 		
+    // Success message
 		setExpenseSuccessMsg(true);
 		setDisableSubmitBtn(true);
-		setGlobalExpenses(convertNumber(expenseAmount) + convertNumber(globalExpenses)); // still testing this
+    
+    // Generate updated global expenses amount
+    const generateGlobalExpensesAmount =  parseFloat(expenseAmount) + parseFloat(globalExpenses);
+    
+		setGlobalExpenses(generateGlobalExpensesAmount.toFixed(2)); // convert to string with two decimal places
 		
 		// Remove success message & re-enable the submit button
 		setTimeout(() => {
