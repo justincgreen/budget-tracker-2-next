@@ -8,7 +8,9 @@ const ExpenseForm = () => {
 	const { 
 		displayExpenseForm, 
 		setDisplayExpenseForm,
-		globalExpenses,
+		globalBalance,
+    setGlobalBalnce,
+    globalExpenses,
 		setGlobalExpenses,
 		transactions,
 		setTransactions
@@ -51,6 +53,10 @@ const ExpenseForm = () => {
     
     //Add generated global expenses amount to local storage
     localStorage.setItem('local-expenses-amount', JSON.stringify(generateGlobalExpensesAmount.toFixed(2)));
+    
+    // TODO: Need to also update balance amount
+    // Income Amount - global expenses amount (generated expenses amount) = updated balance amount
+    // Add local storage for that global balance as well
 		
 		// Remove success message & re-enable the submit button
 		setTimeout(() => {

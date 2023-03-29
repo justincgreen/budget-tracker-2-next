@@ -8,7 +8,9 @@ const Modal = () => {
 		displayIncomeForm, 
 		setDisplayIncomeForm,
     globalIncome,
-    setGlobalIncome
+    setGlobalIncome,
+    globalBalance,
+    setGlobalBalance
 	} = useContext(GlobalContext);
   
   const [incomeAmount, setIncomeAmount] = useState('');
@@ -32,6 +34,10 @@ const Modal = () => {
       setDisplayIncomeForm(false);
       setDisplayModal(false);
       localStorage.setItem('local-income-amount', JSON.stringify(Math.floor(incomeAmount*100)/100));
+      
+      // TODO: Need to also update balance amount
+      // Income Amount - global expenses amount (generated expenses amount) = updated balance amount
+      // Add local storage for that global balance as well
     }  
   }
 	
