@@ -41,6 +41,9 @@ const ExpenseForm = () => {
     // Add new transaction to main transaction array
 		const newTransaction = [...transactions, currentTransaction];
 		setTransactions(newTransaction);
+    
+    // Add updated transactions array to local storage
+    localStorage.setItem('local-transactions', JSON.stringify(newTransaction));
 		
     // Success message
 		setExpenseSuccessMsg(true);

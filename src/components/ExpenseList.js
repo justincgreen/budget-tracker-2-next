@@ -11,6 +11,23 @@ const ExpenseList = () => {
 		transactions,
 		setTransactions
 	} = useContext(GlobalContext);
+  
+  // useEffect(() => {
+  //   // Local storage hydration
+  //   //-----------------------------
+  //   // Check Transactions
+  //   const getLocalTransactions = () => {
+  //     const data = localStorage.getItem('local-transactions');
+  //     
+  //     if(data) {
+  //       setTransactions(JSON.parse(data));
+  //     }else {
+  //       setTransactions([]);
+  //     }
+  //   }
+  // 
+  //   getLocalTransactions();
+  // }, []);
 	
 	// Display Expense Form
 	const handleDisplayForm = () => {
@@ -57,6 +74,7 @@ const ExpenseList = () => {
 								<span className="c-expense-list__delete" onClick={
 									() => {
 										deleteExpense(item.id)
+                    // need to delete expense from local storage
 									}
 								}>
 									<DeleteForeverIcon sx={{ color: '#ff4e4e' }} />
