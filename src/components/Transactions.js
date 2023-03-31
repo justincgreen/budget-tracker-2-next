@@ -6,7 +6,9 @@ import EditNotificationsIcon from '@mui/icons-material/EditNotifications';
 const Transactions = () => {
   const { 
     displayExpenseForm, 
-    setDisplayExpenseForm,		
+    setDisplayExpenseForm,
+    globalExpenses,
+    setGlobalExpenses,	
     transactions,
     setTransactions
   } = useContext(GlobalContext);
@@ -16,15 +18,26 @@ const Transactions = () => {
     setDisplayExpenseForm(!displayExpenseForm);
   }
   
-  // Delete & Edit Expenses
-  const deleteExpense = (id) => {
+  // Delete - Update global expenses amount & balance amount
+  const deleteExpense = (id, amount) => {
     const filterItems = transactions.filter((element, index) => {
       return element.id !== id;		  
     });
-      
+    
+    // TODO: Eventually add logic to update global balance amount
+    
+    const updatedExpensesAmount = parseFloat(globalExpenses) - parseFloat(amount);        
+        
+    // Update global expenses amount & local storage
+    setGlobalExpenses(updatedExpensesAmount.toFixed(2));
+    localStorage.setItem('local-expenses-amount', JSON.stringify(updatedExpensesAmount.toFixed(2)));    
+        
+    // Update transactions array & local storage
     setTransactions(filterItems);
+    localStorage.setItem('local-transactions', JSON.stringify(filterItems));                
   }
   
+  // Edit Expenses
   const editExpense = () => {
     console.log('Edit Expense');
   }
@@ -45,8 +58,7 @@ const Transactions = () => {
               {/* <span className="c-expense-list__item-amount">${convertNumber(item.amount)}</span> */}
               <span className="c-expense-list__delete" onClick={
                 () => {
-                  deleteExpense(item.id)
-                  // need to delete expense from local storage
+                  deleteExpense(item.id, item.amount)
                 }
               }>
                 <DeleteForeverIcon sx={{ color: '#ff4e4e' }} />
