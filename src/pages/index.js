@@ -8,6 +8,7 @@ import BalanceBlock from '@/components/BalanceBlock';
 import IncomeBlock from '@/components/IncomeBlock';
 import ExpensesBlock from '@/components/ExpensesBlock';
 import Modal from '@/components/Modal';
+import Transactions from '@/components/Transactions';
 
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
@@ -21,7 +22,7 @@ export default function Home() {
  } = useContext(GlobalContext);
  
 useEffect(() => {
-  // Local storage hydration
+  // Local storage hydration - TODO: Move this to it's own helper function for Local Income Amount
   //-----------------------------
   
   // Global Income Amount
@@ -58,7 +59,8 @@ useEffect(() => {
           
           <section className="section__container">
             <div className="section__content">
-              Content
+              <h2>Latest Expenses</h2>
+              <Transactions />
             </div>
           </section>
           
