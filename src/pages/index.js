@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 
 import Head from 'next/head'
@@ -20,23 +20,6 @@ export default function Home() {
    globalIncome,
    setGlobalIncome
  } = useContext(GlobalContext);
- 
-useEffect(() => {
-  // Local storage hydration - TODO: Move this to it's own helper function for Local Income Amount
-  //-----------------------------
-  
-  // Global Income Amount
-   const getLocalIncomeAmount = () => {
-     const data = localStorage.getItem('local-income-amount');
-     if(data) {
-       setGlobalIncome(JSON.parse(data));
-     }else {
-       setGlobalIncome(0);
-     }
-   }
-   
-   getLocalIncomeAmount();
- }, []);
   
   return (
     <>

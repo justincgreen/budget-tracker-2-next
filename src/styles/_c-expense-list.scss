@@ -39,12 +39,14 @@
 	}
 	
 	&__delete {
+    cursor: pointer;
 		position: absolute;
 		top: 5px;
 		right: 7px;
 	}
 	
 	&__edit {
+    cursor: pointer;
 		position: absolute;
 		bottom: 5px;
 		right: 7px;

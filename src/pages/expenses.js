@@ -9,9 +9,11 @@ import Navicon from '@/components/Navicon';
 // Components
 import ExpensesBlock from '@/components/ExpensesBlock';
 import ExpenseList from '@/components/ExpenseList';
+import Modal from '@/components/Modal';
 
 export default function Expenses() {
   const { 
+     displayModal,
      globalExpenses,
      setGlobalExpenses 
    } = useContext(GlobalContext);
@@ -51,10 +53,14 @@ export default function Expenses() {
         
         <section className="section__container">
           <section className="section__content">
-          <ExpenseList />
+            <ExpenseList />
           </section>
         </section>
       </div>
+      
+      {
+        displayModal ? <Modal /> : null
+      }
     </main>
   </>
   )

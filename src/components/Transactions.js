@@ -4,9 +4,13 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditNotificationsIcon from '@mui/icons-material/EditNotifications';
 
 const Transactions = () => {
-  const { 
+  const {
+    displayModal,
+    setDisplayModal,
     displayExpenseForm, 
     setDisplayExpenseForm,
+    displayEditExpenseForm,
+    setDisplayEditExpenseForm,
     globalExpenses,
     setGlobalExpenses,	
     transactions,
@@ -38,8 +42,13 @@ const Transactions = () => {
   }
   
   // Edit Expenses
-  const editExpense = () => {
-    console.log('Edit Expense');
+  const editExpense = (description, amount) => {
+    setDisplayModal(true);
+    setDisplayEditExpenseForm(true);
+    console.log(description, amount);
+    // TODO: The expense description & amount will also need to be updated in local storage
+    // Will also need to update the global balance in local storage after amount is modified
+    // May need to create state(s) to pass data between expense item and modal
   }
   
   return (
@@ -63,7 +72,11 @@ const Transactions = () => {
               }>
                 <DeleteForeverIcon sx={{ color: '#ff4e4e' }} />
               </span>
-              <span className="c-expense-list__edit" onClick={editExpense}>
+              <span className="c-expense-list__edit" onClick={
+                () => {
+                  editExpense(item.description, item.amount)
+                }
+              }>
                 <EditNotificationsIcon sx={{ color: '#55d4da' }} />
               </span>						
             </li>

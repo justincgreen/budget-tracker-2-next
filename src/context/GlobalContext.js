@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext } from 'react';
 import{ hydrateTransactions } from '../helpers/hydrateTransactions';
 import{ hydrateExpenses} from '../helpers/hydrateExpenses';
+import{ hydrateIncome} from '../helpers/hydrateIncome';
 
 const GlobalContext = createContext(null);
 
@@ -18,11 +19,13 @@ export const GlobalProvider = (props) => {
 	// Modal
 	const [displayModal, setDisplayModal] = useState(false);
 	const [displayIncomeForm, setDisplayIncomeForm] = useState(false);
+	const [displayEditExpenseForm, setDisplayEditExpenseForm] = useState(false);
   
   useEffect(() => {
     // Local storage hydration 
     // At the moment there is a flash of the previous state(s) before using the useEffect method to re-render the new states
     //-----------------------------
+    setGlobalIncome(hydrateIncome);
     setGlobalExpenses(hydrateExpenses);
     setTransactions(hydrateTransactions);
   }, []);
@@ -39,6 +42,8 @@ export const GlobalProvider = (props) => {
 			setDisplayExpenseForm,
 			addExpenseForm,
 			setAddExpenseForm,
+      displayEditExpenseForm,
+      setDisplayEditExpenseForm,
 			displayModal,
 			setDisplayModal,
 			displayIncomeForm,

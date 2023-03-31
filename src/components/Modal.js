@@ -7,6 +7,8 @@ const Modal = () => {
 		setDisplayModal,
 		displayIncomeForm, 
 		setDisplayIncomeForm,
+    displayEditExpenseForm,
+    setDisplayEditExpenseForm,
     globalIncome,
     setGlobalIncome,
     globalBalance,
@@ -14,10 +16,13 @@ const Modal = () => {
 	} = useContext(GlobalContext);
   
   const [incomeAmount, setIncomeAmount] = useState('');
+  const [editExpenseDescription, setEditExpenseDescription] = useState('');
+  const [editExpenseAmount, setEditExpenseAmount] = useState(0);
 	
 	const closeModal = () => {
 		setDisplayModal(false);
 		setDisplayIncomeForm(false);
+		displayEditExpenseForm === true ? setDisplayEditExpenseForm(false) : null;
 	}
   
   // Income Form
@@ -40,6 +45,23 @@ const Modal = () => {
       // Add local storage for that global balance as well
     }  
   }
+  
+  // Edit Expense
+  const captureExpenseDescription = (e) => {
+    setEditExpenseDescription(e.target.value);
+  }
+  
+  const captureExpenseAmount = (e) => {
+    setEditExpenseAmount(e.target.value);
+  }
+  
+  const saveUpdatedExpense = () => {
+    console.log(editExpenseDescription, parseFloat(editExpenseAmount).toFixed(2));
+    // On click the expense description and amount will need to be updated in the DOM and in local storage
+    // The updated amount will also need to be reflected in the global balance
+    // some type of logic that says if new number is greater then old amount add to global balance
+    // if new number is lower than old amount then subtract from global balance
+  }
 	
 	return (
 		<div className="c-modal">
@@ -57,6 +79,19 @@ const Modal = () => {
           :
           null
 			  }
+        
+        {
+          displayEditExpenseForm 
+          ?
+          <div>
+            <h2>Edit Expense</h2>
+            <input type="type" placeholder="Enter Description" className="c-modal__edit-expense-input" onChange={captureExpenseDescription} />
+            <input type="number" min="0" placeholder="Enter Amount" className="c-modal__edit-expense-input" onChange={captureExpenseAmount} />
+            <button className="button" onClick={saveUpdatedExpense}>Save</button>
+          </div>
+          :
+          null
+        }
       </div>
 		</div>
 	)
