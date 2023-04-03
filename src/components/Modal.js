@@ -27,8 +27,8 @@ const Modal = () => {
   
   // Isolated component states
   const [incomeAmount, setIncomeAmount] = useState('');
-  const [editExpenseDescription, setEditExpenseDescription] = useState('');
-  const [editExpenseAmount, setEditExpenseAmount] = useState(0);
+  const [editExpenseDescription, setEditExpenseDescription] = useState(isolatedExpense.description);
+  const [editExpenseAmount, setEditExpenseAmount] = useState(isolatedExpense.amount);
 	
   // Close Modal
 	const closeModal = () => {
@@ -117,39 +117,44 @@ const Modal = () => {
   }
   
   const saveUpdatedExpense = () => {    
-   // console.log(editExpenseDescription, parseFloat(editExpenseAmount).toFixed(2));
-   // Update object, returns new array
-   const updateObject= transactions.map((obj) => {
+   // Update object, updateExpense function returns a new array
+   const updateExpense= transactions.map((obj) => {
     return obj.id === isolatedExpense.id ? { ...obj, description: editExpenseDescription, amount: editExpenseAmount } : obj 
    });
    
-   setTransactions(updateObject);
+   setTransactions(updateExpense);
+   localStorage.setItem('local-transactions', JSON.stringify(updateExpense));
    
-   // Update global Expenses = GlobalExpenses - editExpenseAmount
-   // add to local storage (local-expenses-amount)
+   // Update global expenses
+   const updatedGlobalExpenses = () => {
+     if(isolatedExpense.amount === editExpenseAmount) { // which means the amount hasn't been changed, close modal
+       // Close Modal
+       setDisplayModal(false);
+       setDisplayEditExpenseForm(false);
+     }
+     else if(isolatedExpense.amount !== editExpenseAmount){
+      // Add the transactions objects amounts together to get the updated globalExpenses amount
+      // https://bobbyhadz.com/blog/javascript-get-sum-of-array-object-values
+      const sum = updateExpense.reduce((accumulator, objects) => {
+       return accumulator + parseFloat(objects.amount);
+      }, 0);
+       
+       setGlobalExpenses(sum);
+       localStorage.setItem('local-expenses-amount', JSON.stringify(sum.toFixed(2))); 
+       
+       // Update global balance
+       const updatedGlobalBalance = parseFloat(globalIncome) - parseFloat(sum);
+       setGlobalBalance(updatedGlobalBalance.toFixed(2));
+       localStorage.setItem('local-balance-amount', JSON.stringify(updatedGlobalBalance.toFixed(2)));
+       
+       // Close Modal
+       setDisplayModal(false);
+       setDisplayEditExpenseForm(false);
+     }
+   }
    
-   // Update global Balance = Global Income - Global Expenses
-   // add to local storage (local-balance-amount)
-   
-   //setIsolatedExpense({}); // need to reset this state so new value can be used later
-   
-   //----------------------------------------------------------------------------------------------- DELETE BELOW WHEN READY
-    //Find index of specific object using findIndex method.    
-    // const objIndex = transactions.findIndex((obj => obj.id === isolatedExpense.id));
-    // 
-    // console.log('Before', objIndex); // before change
-    // console.log(transactions);
-    // 
-    // //Update object's name property.
-    // transactions[objIndex].description = editExpenseDescription;
-    // console.log('After', objIndex); // After change
-    // console.log(transactions);
-    
-    
-    // On click the expense description and amount will need to be updated in the DOM and in local storage
-    // The updated amount will also need to be reflected in the global balance
-    // some type of logic that says if new number is greater then old amount add to global balance
-    // if new number is lower than old amount then subtract from global balance
+   updatedGlobalExpenses();
+   setIsolatedExpense({}); // need to reset this state so new value can be used later   
   }
 	
 	return (
@@ -174,8 +179,8 @@ const Modal = () => {
           ?
           <div>
             <h2>Edit Expense</h2>
-            <input type="type" placeholder="Enter Description" className="c-modal__edit-expense-input" onChange={captureExpenseDescription} />
-            <input type="number" min="0" placeholder="Enter Amount" className="c-modal__edit-expense-input" onChange={captureExpenseAmount} />
+            <input type="type" placeholder="Enter Description" className="c-modal__edit-expense-input" onChange={captureExpenseDescription} value={editExpenseDescription} />
+            <input type="number" min="0" placeholder="Enter Amount" className="c-modal__edit-expense-input" onChange={captureExpenseAmount} value={editExpenseAmount} />
             <button className="button" onClick={saveUpdatedExpense}>Save</button>
           </div>
           :
