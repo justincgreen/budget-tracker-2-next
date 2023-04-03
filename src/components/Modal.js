@@ -81,7 +81,7 @@ const Modal = () => {
     setGlobalBalance(updatedBalanceAmount);
     localStorage.setItem('local-balance-amount', JSON.stringify(updatedBalanceAmount));
     
-    setIsolatedExpense({}); // need to reset this so new value can be used later
+    setIsolatedExpense({}); // need to reset this state so new value can be used later
      
     // Hide modal
     setDisplayModal(false);
@@ -116,8 +116,36 @@ const Modal = () => {
     setEditExpenseAmount(e.target.value);
   }
   
-  const saveUpdatedExpense = () => {
-    console.log(editExpenseDescription, parseFloat(editExpenseAmount).toFixed(2));
+  const saveUpdatedExpense = () => {    
+   // console.log(editExpenseDescription, parseFloat(editExpenseAmount).toFixed(2));
+   // Update object, returns new array
+   const updateObject= transactions.map((obj) => {
+    return obj.id === isolatedExpense.id ? { ...obj, description: editExpenseDescription, amount: editExpenseAmount } : obj 
+   });
+   
+   setTransactions(updateObject);
+   
+   // Update global Expenses = GlobalExpenses - editExpenseAmount
+   // add to local storage (local-expenses-amount)
+   
+   // Update global Balance = Global Income - Global Expenses
+   // add to local storage (local-balance-amount)
+   
+   //setIsolatedExpense({}); // need to reset this state so new value can be used later
+   
+   //----------------------------------------------------------------------------------------------- DELETE BELOW WHEN READY
+    //Find index of specific object using findIndex method.    
+    // const objIndex = transactions.findIndex((obj => obj.id === isolatedExpense.id));
+    // 
+    // console.log('Before', objIndex); // before change
+    // console.log(transactions);
+    // 
+    // //Update object's name property.
+    // transactions[objIndex].description = editExpenseDescription;
+    // console.log('After', objIndex); // After change
+    // console.log(transactions);
+    
+    
     // On click the expense description and amount will need to be updated in the DOM and in local storage
     // The updated amount will also need to be reflected in the global balance
     // some type of logic that says if new number is greater then old amount add to global balance
