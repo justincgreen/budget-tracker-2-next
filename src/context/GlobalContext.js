@@ -20,6 +20,11 @@ export const GlobalProvider = (props) => {
 	const [displayModal, setDisplayModal] = useState(false);
 	const [displayIncomeForm, setDisplayIncomeForm] = useState(false);
 	const [displayEditExpenseForm, setDisplayEditExpenseForm] = useState(false);
+	const [displayDeleteExpenseForm, setDisplayDeleteExpenseForm] = useState(false);
+  
+  // Misc
+  const [isolatedExpense, setIsolatedExpense] = useState({});
+  //const [deleteAllExpenses, setDeleteAllExpenses] = useState(false);
   
   useEffect(() => {
     // Local storage hydration 
@@ -31,7 +36,7 @@ export const GlobalProvider = (props) => {
   }, []);
 		
 	return (
-		<GlobalContext.Provider value={{
+		<GlobalContext.Provider value={{      
 			globalBalance,
 			setGlobalBalance,
 			globalIncome,
@@ -48,6 +53,10 @@ export const GlobalProvider = (props) => {
 			setDisplayModal,
 			displayIncomeForm,
 			setDisplayIncomeForm,
+      displayDeleteExpenseForm,
+      setDisplayDeleteExpenseForm,
+      isolatedExpense,
+      setIsolatedExpense,
 			transactions,
 			setTransactions
 		}}>

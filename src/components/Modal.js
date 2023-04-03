@@ -9,21 +9,34 @@ const Modal = () => {
 		setDisplayIncomeForm,
     displayEditExpenseForm,
     setDisplayEditExpenseForm,
+    displayDeleteExpenseForm,
+    setDisplayDeleteExpenseForm,
+    isolatedExpense,
+    setIsolatedExpense,
     globalIncome,
     setGlobalIncome,
     globalBalance,
-    setGlobalBalance
+    setGlobalBalance,
+    globalExpenses,
+    setGlobalExpenses,
+    transactions,
+    setTransactions
 	} = useContext(GlobalContext);
   
   const [incomeAmount, setIncomeAmount] = useState('');
   const [editExpenseDescription, setEditExpenseDescription] = useState('');
   const [editExpenseAmount, setEditExpenseAmount] = useState(0);
 	
+  // Close Modal
 	const closeModal = () => {
 		setDisplayModal(false);
 		setDisplayIncomeForm(false);
 		displayEditExpenseForm === true ? setDisplayEditExpenseForm(false) : null;
+		displayDeleteExpenseForm === true ? setDisplayDeleteExpenseForm(false) : null;
+    setIsolatedExpense({});
 	}
+  
+  //-----------------------------------------------------------------------------------------------
   
   // Income Form
   const captureIncomeAmount = (e) => {
@@ -31,7 +44,7 @@ const Modal = () => {
   }
   
   const saveGlobalAmount = () => {
-    if(isNaN(incomeAmount) || incomeAmount === 0 || incomeAmount === '') {
+    if(isNaN(incomeAmount) || incomeAmount === '') {
       alert()      
     } 
     else {
@@ -45,6 +58,33 @@ const Modal = () => {
       // Add local storage for that global balance as well
     }  
   }
+  
+  //-----------------------------------------------------------------------------------------------
+  
+  // Delete Expense Confirmation  - interconnected with the Transactions component
+  const deleteExpenseConfirmation = () => {
+    const filterTransactions = transactions.filter((element) => {
+      return element.id !== isolatedExpense.id;		  
+    });
+    
+    const updatedExpensesAmount = parseFloat(globalExpenses) - parseFloat(isolatedExpense.amount);
+    
+    setTransactions(filterTransactions);
+    localStorage.setItem('local-transactions', JSON.stringify(filterTransactions));
+    
+    setGlobalExpenses(updatedExpensesAmount.toFixed(2));
+    localStorage.setItem('local-expenses-amount', JSON.stringify(updatedExpensesAmount.toFixed(2))); 
+    
+    setIsolatedExpense({}); // need to reset this so new value can be used later
+    
+    // Eventually will need to update the global balance as well Income - Expenses = balance
+    
+    // Hide modal
+    setDisplayModal(false);
+    setDisplayDeleteExpenseForm(false);
+  }
+  
+  //-----------------------------------------------------------------------------------------------
   
   // Edit Expense
   const captureExpenseDescription = (e) => {
@@ -88,6 +128,20 @@ const Modal = () => {
             <input type="type" placeholder="Enter Description" className="c-modal__edit-expense-input" onChange={captureExpenseDescription} />
             <input type="number" min="0" placeholder="Enter Amount" className="c-modal__edit-expense-input" onChange={captureExpenseAmount} />
             <button className="button" onClick={saveUpdatedExpense}>Save</button>
+          </div>
+          :
+          null
+        }
+        
+        {
+          displayDeleteExpenseForm
+          ?
+          <div>
+            <h2>Delete Expense?</h2>
+            <div className="button-group">
+             <button className="button" onClick={deleteExpenseConfirmation}>Yes</button>
+             <button className="button" onClick={closeModal}>No</button>
+            </div>
           </div>
           :
           null

@@ -31,7 +31,7 @@ const BalanceBlock = () => {
 		<div className="c-amount-block">
 			<Navicon />
 			<h1 className="c-amount-block__page-title">Balance</h1>
-			<h2 className="c-amount-block__amount-title animate-number" amount={globalBalance}>0</h2>
+			<h2 className="c-amount-block__amount-title animate-number" amount={globalBalance}>{globalBalance}</h2>
 		</div>
 	)
 }

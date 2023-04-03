@@ -11,6 +11,10 @@ const Transactions = () => {
     setDisplayExpenseForm,
     displayEditExpenseForm,
     setDisplayEditExpenseForm,
+    displayDeleteExpenseForm,
+    setDisplayDeleteExpenseForm,
+    isolatedExpense,
+    setIsolatedExpense,
     globalExpenses,
     setGlobalExpenses,	
     transactions,
@@ -22,23 +26,11 @@ const Transactions = () => {
     setDisplayExpenseForm(!displayExpenseForm);
   }
   
-  // Delete - Update global expenses amount & balance amount
-  const deleteExpense = (id, amount) => {
-    const filterItems = transactions.filter((element, index) => {
-      return element.id !== id;		  
-    });
-    
-    // TODO: Eventually add logic to update global balance amount
-    
-    const updatedExpensesAmount = parseFloat(globalExpenses) - parseFloat(amount);        
-        
-    // Update global expenses amount & local storage
-    setGlobalExpenses(updatedExpensesAmount.toFixed(2));
-    localStorage.setItem('local-expenses-amount', JSON.stringify(updatedExpensesAmount.toFixed(2)));    
-        
-    // Update transactions array & local storage
-    setTransactions(filterItems);
-    localStorage.setItem('local-transactions', JSON.stringify(filterItems));                
+  // Delete expense modal
+  const deleteExpenseModal = (id, amount) => {
+    setDisplayModal(true);
+    setDisplayDeleteExpenseForm(true);
+    setIsolatedExpense({id, amount});                
   }
   
   // Edit Expenses
@@ -67,7 +59,7 @@ const Transactions = () => {
               {/* <span className="c-expense-list__item-amount">${convertNumber(item.amount)}</span> */}
               <span className="c-expense-list__delete" onClick={
                 () => {
-                  deleteExpense(item.id, item.amount)
+                  deleteExpenseModal(item.id, item.amount)
                 }
               }>
                 <DeleteForeverIcon sx={{ color: '#ff4e4e' }} />
