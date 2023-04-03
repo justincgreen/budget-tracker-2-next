@@ -63,13 +63,14 @@ const Modal = () => {
   
   //-----------------------------------------------------------------------------------------------
   
-  // Delete Expense Confirmation  - interconnected with the Transactions component
+  // Delete Single Expense Confirmation  - interconnected with the Transactions component
   const deleteExpenseConfirmation = () => {
     const filterTransactions = transactions.filter((element) => {
       return element.id !== isolatedExpense.id;		  
     });
     
     const updatedExpensesAmount = parseFloat(globalExpenses) - parseFloat(isolatedExpense.amount);
+    const updatedBalanceAmount = parseFloat(globalIncome) - parseFloat(updatedExpensesAmount);
     
     setTransactions(filterTransactions);
     localStorage.setItem('local-transactions', JSON.stringify(filterTransactions));
@@ -77,10 +78,11 @@ const Modal = () => {
     setGlobalExpenses(updatedExpensesAmount.toFixed(2));
     localStorage.setItem('local-expenses-amount', JSON.stringify(updatedExpensesAmount.toFixed(2))); 
     
+    setGlobalBalance(updatedBalanceAmount);
+    localStorage.setItem('local-balance-amount', JSON.stringify(updatedBalanceAmount));
+    
     setIsolatedExpense({}); // need to reset this so new value can be used later
-    
-    // Eventually will need to update the global balance as well Income - Expenses = balance
-    
+     
     // Hide modal
     setDisplayModal(false);
     setDisplayDeleteExpenseForm(false);
