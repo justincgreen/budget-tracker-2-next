@@ -21,10 +21,10 @@ export const GlobalProvider = (props) => {
 	const [displayIncomeForm, setDisplayIncomeForm] = useState(false);
 	const [displayEditExpenseForm, setDisplayEditExpenseForm] = useState(false);
 	const [displayDeleteExpenseForm, setDisplayDeleteExpenseForm] = useState(false);
+	const [displayDeleteAllExpensesForm, setDisplayDeleteAllExpensesForm] = useState(false);
   
   // Misc
   const [isolatedExpense, setIsolatedExpense] = useState({});
-  //const [deleteAllExpenses, setDeleteAllExpenses] = useState(false);
   
   useEffect(() => {
     // Local storage hydration 
@@ -55,6 +55,8 @@ export const GlobalProvider = (props) => {
 			setDisplayIncomeForm,
       displayDeleteExpenseForm,
       setDisplayDeleteExpenseForm,
+      displayDeleteAllExpensesForm,
+      setDisplayDeleteAllExpensesForm,
       isolatedExpense,
       setIsolatedExpense,
 			transactions,

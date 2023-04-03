@@ -11,6 +11,8 @@ const Modal = () => {
     setDisplayEditExpenseForm,
     displayDeleteExpenseForm,
     setDisplayDeleteExpenseForm,
+    displayDeleteAllExpensesForm,
+    setDisplayDeleteAllExpensesForm,
     isolatedExpense,
     setIsolatedExpense,
     globalIncome,
@@ -23,6 +25,7 @@ const Modal = () => {
     setTransactions
 	} = useContext(GlobalContext);
   
+  // Isolated component states
   const [incomeAmount, setIncomeAmount] = useState('');
   const [editExpenseDescription, setEditExpenseDescription] = useState('');
   const [editExpenseAmount, setEditExpenseAmount] = useState(0);
@@ -33,6 +36,7 @@ const Modal = () => {
 		setDisplayIncomeForm(false);
 		displayEditExpenseForm === true ? setDisplayEditExpenseForm(false) : null;
 		displayDeleteExpenseForm === true ? setDisplayDeleteExpenseForm(false) : null;
+		displayDeleteAllExpensesForm === true ? setDisplayDeleteAllExpensesForm(false) : null;
     setIsolatedExpense({});
 	}
   
@@ -82,6 +86,22 @@ const Modal = () => {
     // Hide modal
     setDisplayModal(false);
     setDisplayDeleteExpenseForm(false);
+  }
+  
+  //-----------------------------------------------------------------------------------------------
+  
+  // Delete All Expenses
+  const deleteAllExpensesConfirmation = () => {
+    const resetExpenses = 0;
+    
+    setTransactions([]);
+    setGlobalExpenses(resetExpenses);
+    localStorage.setItem('local-transactions', '[]');
+    localStorage.setItem('local-expenses-amount', JSON.stringify(resetExpenses.toFixed(2)));
+    // Eventually will need to update the balance Income - expenses = balance
+    
+    setDisplayModal(false);
+    setDisplayDeleteAllExpensesForm(false);
   }
   
   //-----------------------------------------------------------------------------------------------
@@ -140,6 +160,20 @@ const Modal = () => {
             <h2>Delete Expense?</h2>
             <div className="button-group">
              <button className="button" onClick={deleteExpenseConfirmation}>Yes</button>
+             <button className="button" onClick={closeModal}>No</button>
+            </div>
+          </div>
+          :
+          null
+        }
+        
+        {
+          displayDeleteAllExpensesForm
+          ?
+          <div>
+            <h2>Delete All Expenses?</h2>
+            <div className="button-group">
+             <button className="button" onClick={deleteAllExpensesConfirmation}>Yes</button>
              <button className="button" onClick={closeModal}>No</button>
             </div>
           </div>
