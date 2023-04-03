@@ -1,5 +1,6 @@
 import { useEffect, useState, createContext } from 'react';
 import{ hydrateTransactions } from '../helpers/hydrateTransactions';
+import{ hydrateBalance } from '../helpers/hydrateBalance';
 import{ hydrateExpenses} from '../helpers/hydrateExpenses';
 import{ hydrateIncome} from '../helpers/hydrateIncome';
 
@@ -30,6 +31,7 @@ export const GlobalProvider = (props) => {
     // Local storage hydration 
     // At the moment there is a flash of the previous state(s) before using the useEffect method to re-render the new states
     //-----------------------------
+    setGlobalBalance(hydrateBalance);
     setGlobalIncome(hydrateIncome);
     setGlobalExpenses(hydrateExpenses);
     setTransactions(hydrateTransactions);

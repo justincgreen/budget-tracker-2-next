@@ -53,13 +53,11 @@ const Modal = () => {
     } 
     else {
       setGlobalIncome(Math.floor(incomeAmount*100)/100); // account for two decimals places
+      setGlobalBalance(Math.floor(incomeAmount*100)/100 - parseFloat(globalExpenses));
       setDisplayIncomeForm(false);
       setDisplayModal(false);
       localStorage.setItem('local-income-amount', JSON.stringify(Math.floor(incomeAmount*100)/100));
-      
-      // TODO: Need to also update balance amount
-      // Income Amount - global expenses amount (generated expenses amount) = updated balance amount
-      // Add local storage for that global balance as well
+      localStorage.setItem('local-balance-amount', JSON.stringify(Math.floor(incomeAmount*100)/100) - parseFloat(globalExpenses));
     }  
   }
   
@@ -96,9 +94,10 @@ const Modal = () => {
     
     setTransactions([]);
     setGlobalExpenses(resetExpenses);
+    setGlobalBalance(globalIncome);
     localStorage.setItem('local-transactions', '[]');
     localStorage.setItem('local-expenses-amount', JSON.stringify(resetExpenses.toFixed(2)));
-    // Eventually will need to update the balance Income - expenses = balance
+    localStorage.setItem('local-balance-amount', JSON.stringify(globalIncome));
     
     setDisplayModal(false);
     setDisplayDeleteAllExpensesForm(false);

@@ -9,9 +9,10 @@ const ExpenseForm = () => {
 		displayExpenseForm, 
 		setDisplayExpenseForm,
 		globalBalance,
-    setGlobalBalnce,
+    setGlobalBalance,
     globalExpenses,
 		setGlobalExpenses,
+    globalIncome,
 		transactions,
 		setTransactions
 	} = useContext(GlobalContext);
@@ -57,9 +58,12 @@ const ExpenseForm = () => {
     //Add generated global expenses amount to local storage
     localStorage.setItem('local-expenses-amount', JSON.stringify(generateGlobalExpensesAmount.toFixed(2)));
     
-    // TODO: Need to also update balance amount
-    // Income Amount - global expenses amount (generated expenses amount) = updated balance amount
-    // Add local storage for that global balance as well
+    // Update global balance
+    const updatedBalance = parseFloat(globalIncome) - parseFloat(generateGlobalExpensesAmount);
+    setGlobalBalance(updatedBalance);
+    
+    //Add generated global balance amount to local storage
+    localStorage.setItem('local-balance-amount', JSON.stringify(updatedBalance.toFixed(2)));
 		
 		// Remove success message & re-enable the submit button
 		setTimeout(() => {
