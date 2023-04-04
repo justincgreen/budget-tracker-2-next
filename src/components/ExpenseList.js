@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import ExpenseForm from '@/components/ExpenseForm';
 import Search from '@/components/Search';
@@ -16,6 +16,8 @@ const ExpenseList = () => {
     setTransactions,
     setGlobalExpenses
 	} = useContext(GlobalContext);
+  
+  const [displaySearch, setDisplaySearch] = useState(false);
 	
 	// Display Expense Form
 	const handleDisplayForm = () => {
@@ -27,7 +29,8 @@ const ExpenseList = () => {
     setDisplayModal(true);
     setDisplayDeleteAllExpensesForm(true);
   }
-	
+  
+  // Isolated component	
 	const renderListUpper = () => {
 		return (
 			<div className="c-expense-list__upper c-expense-list__upper--alt-layout">
@@ -52,11 +55,11 @@ const ExpenseList = () => {
 			{
 				displayExpenseForm ? <ExpenseForm /> : renderListUpper()
 			}
-      {/* {
-        transactions.length > 1 ? <Search /> : null
-      } */}
+      {
+       !displayExpenseForm && transactions.length >= 5 ? <Search /> : null
+      }
 			{
-				!displayExpenseForm && <Transactions />
+				!displayExpenseForm ? <Transactions /> : null
 			}
 		</div>
 	)

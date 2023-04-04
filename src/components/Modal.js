@@ -49,7 +49,7 @@ const Modal = () => {
   
   const saveGlobalAmount = () => {
     if(isNaN(incomeAmount) || incomeAmount === '') {
-      alert()      
+      alert('Enter an income amount');      
     } 
     else {
       setGlobalIncome(Math.floor(incomeAmount*100)/100); // account for two decimals places
