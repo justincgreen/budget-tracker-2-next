@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import EditNotificationsIcon from '@mui/icons-material/EditNotifications';
+import EditIcon from '@mui/icons-material/Edit';
 
 const Transactions = () => {
   const {
@@ -38,11 +38,6 @@ const Transactions = () => {
     setDisplayModal(true);
     setDisplayEditExpenseForm(true);
     setIsolatedExpense({id, description, amount});
-    console.log(id, description, amount);
-    // TODO: The expense description & amount will also need to be updated in local storage
-    // Will also need to update the global balance in local storage after amount is modified
-    // May need to create state(s) to pass data between expense item and modal
-    // need to update object using the id from the transactions array
   }
   
   return (
@@ -64,14 +59,14 @@ const Transactions = () => {
                   deleteExpenseModal(item.id, item.amount)
                 }
               }>
-                <DeleteForeverIcon sx={{ color: '#ff4e4e' }} />
+                <DeleteForeverIcon sx={{ color: '#ff4e4e', fontSize: '28px' }} />
               </span>
               <span className="c-expense-list__edit" onClick={
                 () => {
                   editExpense(item.id, item.description, item.amount)
                 }
               }>
-                <EditNotificationsIcon sx={{ color: '#55d4da' }} />
+                <EditIcon sx={{ color: '#55d4da', fontSize: '28px' }} />
               </span>						
             </li>
           )

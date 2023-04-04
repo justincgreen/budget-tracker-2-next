@@ -1,6 +1,9 @@
 // Buttons 
 .button {
+  font-size: 12px;
 	padding: 10px;
+  border-radius: 5px;
+  border: none;
   cursor: pointer;
   
   &:disabled {
