@@ -10,6 +10,7 @@ import Navicon from '@/components/Navicon';
 import ExpensesBlock from '@/components/ExpensesBlock';
 import ExpenseList from '@/components/ExpenseList';
 import Modal from '@/components/Modal';
+import Footer from '@/components/Footer';
 
 export default function Expenses() {
   const { 
@@ -30,15 +31,17 @@ export default function Expenses() {
     <main className="main">
       <Navigation />				
       
-        <div className="page__wrapper">
-          <Navicon />
-          <ExpensesBlock />
+      <div className="page__wrapper">
+        <Navicon />
+        <ExpensesBlock />
         
         <section className="section__container">
           <section className="section__content">
             <ExpenseList />
           </section>
         </section>
+        
+        <Footer />
       </div>
       
       {

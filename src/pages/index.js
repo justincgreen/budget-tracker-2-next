@@ -13,6 +13,7 @@ import Transactions from '@/components/Transactions';
 import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 import ButtonGroup from '@/components/ButtonGroup';
+import Footer from '@/components/Footer';
 
 export default function Home() {
  const { 
@@ -50,8 +51,10 @@ export default function Home() {
           {
             displayModal ? <Modal /> : null
           }
+          
+          <Footer />
         </div>
-      </main>
+      </main>            
     </>
   )
 }
