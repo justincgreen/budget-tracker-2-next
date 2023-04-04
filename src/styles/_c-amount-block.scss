@@ -2,27 +2,39 @@
 .c-amount-block {
   flex-basis: 33.3%;
 	padding: .5em;
-	background: #16c4fe;
-	background: linear-gradient(to right, #16c4fe, #119ff3);
+	// background: #16c4fe;
+	// background: linear-gradient(to right, #16c4fe, #119ff3);
   
   @media(max-width: $bp-small) {
     flex-basis: 100%;
   }
 	
 	&--income {
-		background: #bee83c;
-		background: linear-gradient(90deg, #bee83c 0%, #00be09 100%);			
+    @media(max-width: $bp-small) {
+      border-top: 1px solid $c-black-lightest;
+      border-bottom: 1px solid $c-black-lightest; 
+    }    
+		// background: #bee83c;
+		// background: linear-gradient(90deg, #bee83c 0%, #00be09 100%);	
+    
+    .c-amount-block__amount-title {
+      color: $t-green;
+    }
 	}
 	
 	&--expenses {
-		background: #ff8181;
-		background: linear-gradient(90deg, #ff8181 0%, #ff4e4e 100%);
+		// background: #ff8181;
+		// background: linear-gradient(90deg, #ff8181 0%, #ff4e4e 100%);
+    
+    .c-amount-block__amount-title {
+      color: $t-red;
+    }
 	}
 	
 	&__page-title {
 		text-align: center;
 		color: #fff;
-		font-size: 2em;
+		font-size: 1.5em;
 		font-weight: 100;
 	}
 	

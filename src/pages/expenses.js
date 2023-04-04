@@ -18,23 +18,6 @@ export default function Expenses() {
      setGlobalExpenses 
    } = useContext(GlobalContext);
    
-  // useEffect(() => {
-  //   // Local storage hydration
-  //   //-----------------------------
-  //   // Global Expenses Amount
-  //   const getLocalExpensesAmount = () => {
-  //     const data = localStorage.getItem('local-expenses-amount');
-  //     
-  //     if(data) {
-  //       setGlobalExpenses(JSON.parse(data));
-  //     }else {
-  //       setGlobalIncome(0);
-  //     }
-  //   }
-  // 
-  //   getLocalExpensesAmount();
-  // }, []);
-   
   return (
   <>
     <Head>

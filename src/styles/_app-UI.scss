@@ -24,6 +24,8 @@
   &__blocks-wrapper {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 2em;
+    padding-top: 1em;
   }	
 }
 
@@ -38,5 +40,5 @@
 }
 
 .section__content {
-	padding: 40px 0;
+	padding: 10px 0 40px 0;
 }

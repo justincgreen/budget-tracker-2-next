@@ -29,8 +29,8 @@ const ExpenseList = () => {
 	
 	const renderListUpper = () => {
 		return (
-			<div className="c-expense-list__upper">
-				<h2 className="c-expense-list__title">Transactions</h2> 
+			<div className="c-expense-list__upper c-expense-list__upper--alt-layout">
+				{/* <h2 className="c-expense-list__title">Transactions</h2>  */}
         <div className="button-group">
 				  <button className="button" onClick={handleDisplayForm}>Add Expense</button>
           {

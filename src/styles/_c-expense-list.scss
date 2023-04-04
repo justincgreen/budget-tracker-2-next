@@ -3,6 +3,11 @@
 	&__upper {
 		display: flex;
 		justify-content: space-between;
+    padding-bottom: 0.5em;
+    
+    &--alt-layout {
+      justify-content: center;
+    }
 	}
 	
 	&__items {
@@ -17,7 +22,7 @@
 		padding: 12px 30px 12px 10px;
 		background-color: $c-black-light;
 		border-radius: 5px;
-		border: 1px solid #555252;
+		border: 1px solid $c-black-lightest;
 		position: relative;
 	}
 	
