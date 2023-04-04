@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import ExpenseForm from '@/components/ExpenseForm';
+import Search from '@/components/Search';
 import Transactions from './Transactions';
 
 const ExpenseList = () => {
@@ -51,6 +52,9 @@ const ExpenseList = () => {
 			{
 				displayExpenseForm ? <ExpenseForm /> : renderListUpper()
 			}
+      {/* {
+        transactions.length > 1 ? <Search /> : null
+      } */}
 			{
 				!displayExpenseForm && <Transactions />
 			}
