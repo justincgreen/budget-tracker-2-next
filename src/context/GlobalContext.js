@@ -26,6 +26,7 @@ export const GlobalProvider = (props) => {
   
   // Misc
   const [isolatedExpense, setIsolatedExpense] = useState({});
+  const [search, setSearch] = useState('');
   
   useEffect(() => {
     // Local storage hydration 
@@ -61,6 +62,8 @@ export const GlobalProvider = (props) => {
       setDisplayDeleteAllExpensesForm,
       isolatedExpense,
       setIsolatedExpense,
+      search,
+      setSearch,
 			transactions,
 			setTransactions
 		}}>

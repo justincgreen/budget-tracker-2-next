@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
@@ -15,6 +15,8 @@ const Transactions = () => {
     setDisplayDeleteExpenseForm,
     isolatedExpense,
     setIsolatedExpense,
+    search,
+    setSearch,
     globalExpenses,
     setGlobalExpenses,	
     transactions,
@@ -39,6 +41,21 @@ const Transactions = () => {
     setDisplayEditExpenseForm(true);
     setIsolatedExpense({id, description, amount});
   }
+  
+  //----------------------------------------------------------------------
+  
+  useEffect(() => {
+    // Search Expenses
+    let expenseItems = document.querySelectorAll('.c-expense-list__item');
+    
+    expenseItems.forEach((expense) => {
+      expense.querySelector('.c-expense-list__item-description').textContent.toLowerCase().startsWith(search) 
+      ? expense.style.display = 'block' 
+      : expense.style.display = 'none';
+    });
+  }, [search]);
+  
+  //----------------------------------------------------------------------
   
   return (
     transactions.length < 1 

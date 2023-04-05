@@ -18,7 +18,7 @@ const ExpenseList = () => {
 	} = useContext(GlobalContext);
   
   const [displaySearch, setDisplaySearch] = useState(false);
-	
+  	
 	// Display Expense Form
 	const handleDisplayForm = () => {
 		setDisplayExpenseForm(!displayExpenseForm);
