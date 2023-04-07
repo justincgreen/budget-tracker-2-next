@@ -3,10 +3,10 @@ import GlobalContext from '@/context/GlobalContext';
 
 import Head from 'next/head';
 import Link from 'next/link';
-import Navigation from '@/components/Navigation';
-import Navicon from '@/components/Navicon';
 
 // Components
+import Navigation from '@/components/Navigation';
+import Navicon from '@/components/Navicon';
 import ExpensesBlock from '@/components/ExpensesBlock';
 import ExpenseList from '@/components/ExpenseList';
 import Modal from '@/components/Modal';

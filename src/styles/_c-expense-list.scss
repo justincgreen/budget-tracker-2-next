@@ -48,6 +48,20 @@
 		position: absolute;
 		top: 5px;
 		right: 7px;
+    
+    svg {
+      path {
+        transition: all 0.2s ease; 
+      }      
+    }
+    
+    &:hover {      
+      svg {
+        path {
+          fill: #E54141;
+        }
+      }
+    }
 	}
 	
 	&__edit {
@@ -55,5 +69,19 @@
 		position: absolute;
 		bottom: 0;
 		right: 7px;
+    
+    svg {
+      path {
+        transition: all 0.2s#55d4da; 
+      }      
+    }
+    
+    &:hover {      
+      svg {
+        path {
+          fill: #44AFB4;
+        }
+      }
+    }
 	}			
 }

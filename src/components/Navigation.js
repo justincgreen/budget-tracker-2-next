@@ -27,7 +27,7 @@ const Navigation = () => {
 					<Link href="/expenses" onClick={closeNav}>Expenses</Link>
 				</li>
 				<li>
-					<Link href="/" onClick={closeNav}>Chart</Link>
+					<Link href="/chart" onClick={closeNav}>Chart</Link>
 				</li>
 			</ul>
 		</nav>

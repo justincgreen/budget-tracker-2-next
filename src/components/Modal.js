@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import GlobalContext from '@/context/GlobalContext';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const Modal = () => {
 	const { 
@@ -160,7 +161,9 @@ const Modal = () => {
 	return (
 		<div className="c-modal">
 			<div className="c-modal__wrapper">
-				<button className="button button__close-modal" onClick={closeModal}>Close</button>			
+				<button className="button button__close-modal" onClick={closeModal}>
+          <CancelIcon sx={{fontSize: '30px', color: '#ff4e4e'}} />
+        </button>			
 			
 			  {
 				  displayIncomeForm
