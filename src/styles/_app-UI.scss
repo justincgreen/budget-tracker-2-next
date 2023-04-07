@@ -42,3 +42,12 @@
 .section__content {
 	padding: 10px 0 80px 0;
 }
+
+.chart-wrapper {
+  padding-top: 50px;
+  
+  @media(min-width: 1024px) {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
