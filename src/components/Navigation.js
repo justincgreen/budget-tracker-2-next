@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const Navigation = () => {
 	const closeNav = (e) => {
-		// Give the illusion of a seamless page load when the menu open and closes
+		// Give the illusion of a seamless page load when the menu open and closes (except in firefox -_-)
 		const navicon = document.querySelector('.c-navicon');
 		const pageWrapper = document.querySelector('.page__wrapper');
 		

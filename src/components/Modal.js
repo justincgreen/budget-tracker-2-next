@@ -182,7 +182,9 @@ const Modal = () => {
           ?
           <div>
             <h2>Edit Expense</h2>
+            <label>Description</label>
             <input type="type" placeholder="Enter Description" className="c-modal__edit-expense-input" onChange={captureExpenseDescription} value={editExpenseDescription} />
+            <label>Amount</label>
             <input type="number" min="0" placeholder="Enter Amount" className="c-modal__edit-expense-input" onChange={captureExpenseAmount} value={editExpenseAmount} />
             <button className="button" onClick={saveUpdatedExpense}>Save</button>
           </div>

@@ -26,7 +26,7 @@ export default function Home() {
     <>
       <Head>
         <title>Budget Tracker 2</title>
-        <meta name="description" content="Budget Tracker 2 home page" />
+        <meta name="description" content="Budget tracker tool to help manage finanaces" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
