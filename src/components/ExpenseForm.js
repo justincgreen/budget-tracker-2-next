@@ -22,6 +22,7 @@ const ExpenseForm = () => {
 	const [expenseAmount, setExpenseAmount] = useState(0);
 	const [expenseSuccessMsg, setExpenseSuccessMsg] = useState(false);
 	const [disableSubmitBtn, setDisableSubmitBtn] = useState(false);
+	const [displayHelperTags, setDisplayHelperTags] = useState(false);
 	
 	// Display form logic
 	const handleDisplayForm = () => {
@@ -71,6 +72,8 @@ const ExpenseForm = () => {
 			setDisableSubmitBtn(false);
 		},1500);
 	}
+  
+  //---------------------------------------------------------------------------------------
 	
 	// Capture form data functions
 	const captureExpenseDescription = (e) => {
@@ -95,14 +98,48 @@ const ExpenseForm = () => {
 			handleTransaction();	
 		}		
 	}
+  
+  //---------------------------------------------------------------------------------------
+  // Helper Tags
+  const handleTags = () => {
+    setDisplayHelperTags(!displayHelperTags);
+  }
+  
+  const captureTagText = (e) => {
+    const inputField = document.querySelector('.form__description');
+    inputField.value = e.target.innerText;
+    setExpenseDescription(e.target.innerText);
+  }
+  
+  //---------------------------------------------------------------------------------------
 	
 	// Render functions - local components
 	const renderListUpper = () => {
 		return (
-			<div className="c-expense-list__upper">
-				<h2 className="c-expense-list__title">Add Expense</h2> 
-				<button className="button" onClick={handleDisplayForm}>View Expenses</button>					
-			</div>
+      <>
+			  <div className="c-expense-list__upper">
+				  <h2 className="c-expense-list__title">Add Expense</h2> 
+				  <button className="button" onClick={handleDisplayForm}>View Expenses</button>        	
+			  </div>
+        
+        <div className="c-expense-list__helper-tags">
+          <div className="c-expense-list__helper-tags-upper">
+            <span>Show helper tags?</span>
+            <input type="checkbox" className="c-expense-list__helper-tags-input" onChange={handleTags} />	
+          </div>
+          {
+            displayHelperTags
+            ?
+            <div className="button-group">
+              <button className="button button__badge" onClick={captureTagText}>Groceries</button>
+              <button className="button button__badge" onClick={captureTagText}>Coffee</button>
+              <button className="button button__badge" onClick={captureTagText}>Savings</button>
+            </div>
+            :
+            null
+          }
+        </div>
+      </>
 		)
 	}
 	

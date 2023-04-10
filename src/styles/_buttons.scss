@@ -38,6 +38,16 @@
       }
     }
   }
+  
+  &__badge {
+    padding: 0.5em;
+    background-color: $c-blue-med;
+    color: $t-white;
+    
+    &:hover {
+      background-color: $c-blue-dark;
+    }
+  }
 }
 
 .button-group {

@@ -9,6 +9,25 @@
       justify-content: center;
     }
 	}
+  
+  &__helper-tags {
+    padding-bottom: 1em;
+    
+    .button-group {
+      justify-content: flex-start;
+      padding-top: 1em;
+    }
+  }
+  
+  &__helper-tags-upper {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__helper-tags-input {
+    width: 20px;
+    height: 20px;
+  }
 	
 	&__items {
 		list-style: none;
