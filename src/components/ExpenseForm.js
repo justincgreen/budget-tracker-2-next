@@ -133,6 +133,7 @@ const ExpenseForm = () => {
             <div className="button-group">
               <button className="button button__badge" onClick={captureTagText}>Groceries</button>
               <button className="button button__badge" onClick={captureTagText}>Coffee</button>
+              <button className="button button__badge" onClick={captureTagText}>Dining</button>
               <button className="button button__badge" onClick={captureTagText}>Savings</button>
               <button className="button button__badge" onClick={captureTagText}>Investments</button>
             </div>
