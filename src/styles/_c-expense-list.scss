@@ -16,6 +16,10 @@
     .button-group {
       justify-content: flex-start;
       padding-top: 1em;
+      
+      @media(max-width: $bp-small) {
+        overflow-x: scroll;
+      }
     }
   }
   
