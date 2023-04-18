@@ -27,6 +27,12 @@
 			}
 		}
 	}
+  
+  &:hover {
+    .c-navicon__bar {
+      background-color: $c-blue-dark;
+    }
+  }
 	
 	&__bar {
 		display: block;

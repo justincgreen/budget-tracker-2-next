@@ -11,6 +11,7 @@ export const GlobalProvider = (props) => {
 	const [globalBalance, setGlobalBalance] = useState(0);
 	const [globalIncome, setGlobalIncome] = useState(0);
 	const [globalExpenses, setGlobalExpenses] = useState(0);
+	const [globalBills, setGlobalBills] = useState(0);
 	
 	// Expenses
 	const [displayExpenseForm, setDisplayExpenseForm] = useState(false);
@@ -46,6 +47,8 @@ export const GlobalProvider = (props) => {
 			setGlobalIncome,
 			globalExpenses,
 			setGlobalExpenses,
+      globalBills,
+      setGlobalBills,
 			displayExpenseForm,
 			setDisplayExpenseForm,
 			addExpenseForm,
