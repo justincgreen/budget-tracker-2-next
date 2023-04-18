@@ -8,8 +8,7 @@ import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Navicon from '@/components/Navicon';
 import BillsBlock from '@/components/BillsBlock';
-import ExpenseList from '@/components/ExpenseList';
-import Modal from '@/components/Modal';
+import BillList from '@/components/BillList';
 import Footer from '@/components/Footer';
 
 export default function Bills() {
@@ -36,7 +35,13 @@ export default function Bills() {
         
         <section className="section__container">
           <section className="section__content">
-            {/* <ExpenseList /> */}
+          {
+            globalBills >= 1 
+            ?
+            <BillList />
+            :
+            'There are currently no bills listed'
+          }
           </section>
         </section>
         
