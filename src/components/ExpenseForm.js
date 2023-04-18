@@ -23,6 +23,7 @@ const ExpenseForm = () => {
 	const [expenseSuccessMsg, setExpenseSuccessMsg] = useState(false);
 	const [disableSubmitBtn, setDisableSubmitBtn] = useState(false);
 	const [displayHelperTags, setDisplayHelperTags] = useState(false);
+	const [billFlag, setBillFlag] = useState(false);
 	
 	// Display form logic
 	const handleDisplayForm = () => {
@@ -37,6 +38,7 @@ const ExpenseForm = () => {
 			id: generateID(),
 			description: expenseDescription,
 			amount: expenseAmount,
+      bill: billFlag,
 			timestamp: currentDate()
 		}
 		
@@ -66,10 +68,12 @@ const ExpenseForm = () => {
     //Add generated global balance amount to local storage
     localStorage.setItem('local-balance-amount', JSON.stringify(updatedBalance.toFixed(2)));
 		
-		// Remove success message & re-enable the submit button
+		// Remove success message, re-enable the submit button, reset bill flag checkbox to false
 		setTimeout(() => {
 			setExpenseSuccessMsg(false);
 			setDisableSubmitBtn(false);
+      setBillFlag(false);
+      document.querySelector('.c-expense-list__bill-flag').checked = false;
 		},1500);
 	}
   
@@ -112,6 +116,13 @@ const ExpenseForm = () => {
   }
   
   //---------------------------------------------------------------------------------------
+  
+  // Bill Flag
+  const handleBillFlag = () => {
+    setBillFlag(!billFlag);
+  }
+  
+  //---------------------------------------------------------------------------------------
 	
 	// Render functions - local components
 	const renderListUpper = () => {
@@ -125,7 +136,7 @@ const ExpenseForm = () => {
         <div className="c-expense-list__helper-tags">
           <div className="c-expense-list__helper-tags-upper">
             <span>Show helper tags?</span>
-            <input type="checkbox" className="c-expense-list__helper-tags-input" onChange={handleTags} />	
+            <input type="checkbox" className="c-expense-list__checkbox" onChange={handleTags} />	
           </div>
           {
             displayHelperTags
@@ -140,7 +151,7 @@ const ExpenseForm = () => {
             :
             null
           }
-        </div>
+        </div>                
       </>
 		)
 	}
@@ -152,6 +163,10 @@ const ExpenseForm = () => {
 				<input type="text" placeholder="Enter Description" className="form__description form__input form__input--100" onChange={captureExpenseDescription} />
 				<label className="form__label">Amount</label>
 				<input type="number" min="0" placeholder="Enter Amount" className="form__amount form__input form__input--100" onChange={captureExpenseAmount} />
+        <div className="form__bill-flag">
+          <span>Is this a bill?</span>
+          <input type="checkbox" className="c-expense-list__checkbox c-expense-list__bill-flag" onChange={handleBillFlag} />               
+        </div>
 				{
 					disableSubmitBtn 
 					?

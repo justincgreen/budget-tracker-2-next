@@ -28,9 +28,10 @@
     align-items: center;
   }
   
-  &__helper-tags-input {
+  &__checkbox {
     width: 20px;
     height: 20px;
+    cursor: pointer;
   }
 	
 	&__items {
