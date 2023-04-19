@@ -67,9 +67,12 @@ const Transactions = () => {
         transactions.map((item) => {
           return (
             <li className={`c-expense-list__item c-expense-list__item-${item.id}`} key={item.id}>
-              <span className="c-expense-list__item-timestamp">{item.timestamp}</span>
+              <span className="c-expense-list__item-timestamp">
+              {item.timestamp}
+              {item.bill === true ? <span className="c-expense-list__item-bill">Bill</span> : ''}
+              </span>
               <span className="c-expense-list__item-description">{item.description }</span>
-              <span className="c-expense-list__item-amount">${parseFloat(item.amount).toFixed(2)}</span>
+              <span className="c-expense-list__item-amount">${parseFloat(item.amount).toFixed(2)}</span>              
               <span className="c-expense-list__delete" onClick={
                 () => {
                   deleteExpenseModal(item.id, item.amount)

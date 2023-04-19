@@ -54,6 +54,21 @@
 		display: block;
 		font-size: $font-size-xxs;
 	}
+  
+  &__item-bill {
+    display: inline-block;
+    margin-left: 10px;
+    
+    &::before {
+      content: '';
+      display: inline-block;
+      margin-right: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $c-red;
+    }
+  }
 	
 	&__item-description {
 		font-weight: bold;
