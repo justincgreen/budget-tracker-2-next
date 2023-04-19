@@ -1,6 +1,3 @@
-import { useContext } from 'react';
-import GlobalContext from '@/context/GlobalContext';
-
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -12,10 +9,6 @@ import BillList from '@/components/BillList';
 import Footer from '@/components/Footer';
 
 export default function Bills() {
-  const { 
-     globalBills,
-     setGlobalBills 
-   } = useContext(GlobalContext);
    
   return (
   <>
@@ -35,13 +28,7 @@ export default function Bills() {
         
         <section className="section__container">
           <section className="section__content">
-          {
-            globalBills >= 1 
-            ?
             <BillList />
-            :
-            'There are currently no bills listed'
-          }
           </section>
         </section>
         
