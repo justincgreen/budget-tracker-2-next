@@ -41,7 +41,7 @@ export const GlobalProvider = (props) => {
   }, []);
 		
   return (
-	  <GlobalContext.Provider value={{      
+    <GlobalContext.Provider value={{      
       globalBalance,
       setGlobalBalance,
       globalIncome,
@@ -70,9 +70,9 @@ export const GlobalProvider = (props) => {
       setSearch,
       transactions,
       setTransactions
-	  }}>
-	  {props.children}
-	  </GlobalContext.Provider>
+    }}>
+    {props.children}
+    </GlobalContext.Provider>
   );
 }
 
