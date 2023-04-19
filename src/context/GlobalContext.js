@@ -7,23 +7,23 @@ import{ hydrateIncome} from '../helpers/hydrateIncome';
 const GlobalContext = createContext(null);
 
 export const GlobalProvider = (props) => {
-	// Balances
-	const [globalBalance, setGlobalBalance] = useState(0);
-	const [globalIncome, setGlobalIncome] = useState(0);
-	const [globalExpenses, setGlobalExpenses] = useState(0);
-	const [globalBills, setGlobalBills] = useState(0);
-	
-	// Expenses
-	const [displayExpenseForm, setDisplayExpenseForm] = useState(false);
-	const [addExpenseForm, setAddExpenseForm] = useState(false);
-	const [transactions, setTransactions] = useState([]);	
-  	
-	// Modal
-	const [displayModal, setDisplayModal] = useState(false);
-	const [displayIncomeForm, setDisplayIncomeForm] = useState(false);
-	const [displayEditExpenseForm, setDisplayEditExpenseForm] = useState(false);
-	const [displayDeleteExpenseForm, setDisplayDeleteExpenseForm] = useState(false);
-	const [displayDeleteAllExpensesForm, setDisplayDeleteAllExpensesForm] = useState(false);
+  // Balances
+  const [globalBalance, setGlobalBalance] = useState(0);
+  const [globalIncome, setGlobalIncome] = useState(0);
+  const [globalExpenses, setGlobalExpenses] = useState(0);
+  const [globalBills, setGlobalBills] = useState(0);
+  
+  // Expenses
+  const [displayExpenseForm, setDisplayExpenseForm] = useState(false);
+  const [addExpenseForm, setAddExpenseForm] = useState(false);
+  const [transactions, setTransactions] = useState([]);	
+	  
+  // Modal
+  const [displayModal, setDisplayModal] = useState(false);
+  const [displayIncomeForm, setDisplayIncomeForm] = useState(false);
+  const [displayEditExpenseForm, setDisplayEditExpenseForm] = useState(false);
+  const [displayDeleteExpenseForm, setDisplayDeleteExpenseForm] = useState(false);
+  const [displayDeleteAllExpensesForm, setDisplayDeleteAllExpensesForm] = useState(false);
   
   // Misc
   const [isolatedExpense, setIsolatedExpense] = useState({});
@@ -31,7 +31,8 @@ export const GlobalProvider = (props) => {
   
   useEffect(() => {
     // Local storage hydration 
-    // At the moment there is a flash of the previous state(s) before using the useEffect method to re-render the new states
+    // At the moment there is a flash of the previous state(s) before using the useEffect method to re-render the new states,
+    // This is due to the current method of app hydration
     //-----------------------------
     setGlobalBalance(hydrateBalance);
     setGlobalIncome(hydrateIncome);
@@ -41,24 +42,24 @@ export const GlobalProvider = (props) => {
 		
 	return (
 		<GlobalContext.Provider value={{      
-			globalBalance,
-			setGlobalBalance,
-			globalIncome,
-			setGlobalIncome,
-			globalExpenses,
-			setGlobalExpenses,
+      globalBalance,
+      setGlobalBalance,
+      globalIncome,
+      setGlobalIncome,
+      globalExpenses,
+      setGlobalExpenses,
       globalBills,
       setGlobalBills,
-			displayExpenseForm,
-			setDisplayExpenseForm,
-			addExpenseForm,
-			setAddExpenseForm,
+      displayExpenseForm,
+      setDisplayExpenseForm,
+      addExpenseForm,
+      setAddExpenseForm,
       displayEditExpenseForm,
       setDisplayEditExpenseForm,
-			displayModal,
-			setDisplayModal,
-			displayIncomeForm,
-			setDisplayIncomeForm,
+      displayModal,
+      setDisplayModal,
+      displayIncomeForm,
+      setDisplayIncomeForm,
       displayDeleteExpenseForm,
       setDisplayDeleteExpenseForm,
       displayDeleteAllExpensesForm,
@@ -67,8 +68,8 @@ export const GlobalProvider = (props) => {
       setIsolatedExpense,
       search,
       setSearch,
-			transactions,
-			setTransactions
+      transactions,
+      setTransactions
 		}}>
 		{props.children}
 		</GlobalContext.Provider>
