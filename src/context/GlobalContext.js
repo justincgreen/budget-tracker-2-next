@@ -40,8 +40,8 @@ export const GlobalProvider = (props) => {
     setTransactions(hydrateTransactions);
   }, []);
 		
-	return (
-		<GlobalContext.Provider value={{      
+  return (
+	  <GlobalContext.Provider value={{      
       globalBalance,
       setGlobalBalance,
       globalIncome,
@@ -70,10 +70,10 @@ export const GlobalProvider = (props) => {
       setSearch,
       transactions,
       setTransactions
-		}}>
-		{props.children}
-		</GlobalContext.Provider>
-	);
+	  }}>
+	  {props.children}
+	  </GlobalContext.Provider>
+  );
 }
 
 export default GlobalContext;
