@@ -69,7 +69,8 @@ const Transactions = () => {
             <li className={`c-expense-list__item c-expense-list__item-${item.id}`} key={item.id}>
               <span className="c-expense-list__item-timestamp">
               {item.timestamp}
-              {item.bill === true ? <span className="c-expense-list__item-bill">Bill</span> : ''}
+              {item.bill === true ? <span className="c-expense-list__item-tag">Bill</span> : ''}
+              {item.grocery === true ? <span className="c-expense-list__item-tag">Grocery</span> : ''}
               </span>
               <span className="c-expense-list__item-description">{item.description }</span>
               <span className="c-expense-list__item-amount">${parseFloat(item.amount).toFixed(2)}</span>              

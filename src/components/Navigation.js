@@ -30,6 +30,9 @@ const Navigation = () => {
           <Link href="/bills" onClick={closeNav}>Bills</Link>
         </li>
         <li>
+          <Link href="/groceries" onClick={closeNav}>Groceries</Link>
+        </li>
+        <li>
           <Link href="https://glimpse-2.vercel.app" onClick={closeNav}>Glimpse 2</Link>
         </li>
 				<li>

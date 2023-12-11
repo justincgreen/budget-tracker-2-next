@@ -24,6 +24,7 @@ const ExpenseForm = () => {
 	const [disableSubmitBtn, setDisableSubmitBtn] = useState(false);
 	const [displayHelperTags, setDisplayHelperTags] = useState(false);
 	const [billFlag, setBillFlag] = useState(false);
+	const [groceryFlag, setGroceryFlag] = useState(false);
 	
 	// Display form logic
 	const handleDisplayForm = () => {
@@ -39,6 +40,7 @@ const ExpenseForm = () => {
 			description: expenseDescription,
 			amount: expenseAmount,
       bill: billFlag,
+      grocery: groceryFlag,
 			timestamp: currentDate()
 		}
 		
@@ -73,7 +75,9 @@ const ExpenseForm = () => {
 			setExpenseSuccessMsg(false);
 			setDisableSubmitBtn(false);
       setBillFlag(false);
+      setGroceryFlag(false);
       document.querySelector('.c-expense-list__bill-flag').checked = false;
+      document.querySelector('.c-expense-list__grocery-flag').checked = false;
 		},1500);
 	}
   
@@ -122,6 +126,11 @@ const ExpenseForm = () => {
     setBillFlag(!billFlag);
   }
   
+  // Grocery Flag
+  const handleGroceryFlag = () => {
+    setGroceryFlag(!groceryFlag);
+  }
+  
   //---------------------------------------------------------------------------------------
 	
 	// Render functions - local components
@@ -163,9 +172,15 @@ const ExpenseForm = () => {
 				<input type="text" placeholder="Enter Description" className="form__description form__input form__input--100" onChange={captureExpenseDescription} />
 				<label className="form__label">Amount</label>
 				<input type="number" min="0" placeholder="Enter Amount" className="form__amount form__input form__input--100" onChange={captureExpenseAmount} />
-        <div className="form__bill-flag">
-          <span>Is this a bill?</span>
-          <input type="checkbox" className="c-expense-list__checkbox c-expense-list__bill-flag" onChange={handleBillFlag} />               
+        <div class="form__flags">
+          <div className="form__item-flag">
+            <span>Bill Label</span>
+            <input type="checkbox" className="c-expense-list__checkbox c-expense-list__bill-flag" onChange={handleBillFlag} />               
+          </div>
+          <div className="form__item-flag">
+            <span>Grocery Label</span>
+            <input type="checkbox" className="c-expense-list__checkbox c-expense-list__grocery-flag" onChange={handleGroceryFlag} />               
+          </div>
         </div>
 				{
 					disableSubmitBtn 

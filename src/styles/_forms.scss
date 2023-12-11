@@ -14,7 +14,13 @@
 		}		
 	}
   
-  &__bill-flag {    
+  &__flags {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  &__item-flag {    
     display: flex;
     align-items: center;
     margin-bottom: 15px;
