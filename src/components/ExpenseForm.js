@@ -181,7 +181,7 @@ const ExpenseForm = () => {
 				<input type="text" placeholder="Enter Description" className="form__description form__input form__input--100" onChange={captureExpenseDescription} />
 				<label className="form__label">Amount</label>
 				<input type="number" min="0" placeholder="Enter Amount" className="form__amount form__input form__input--100" onChange={captureExpenseAmount} />
-        <div class="form__flags">
+        <div className="form__flags">
           <div className="form__item-flag">
             <span>Bill Label</span>
             <input type="checkbox" className="c-expense-list__checkbox c-expense-list__bill-flag" onChange={handleBillFlag} />               
