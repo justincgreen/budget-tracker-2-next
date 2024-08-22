@@ -117,6 +117,15 @@ const ExpenseForm = () => {
     const inputField = document.querySelector('.form__description');
     inputField.value = e.target.innerText;
     setExpenseDescription(e.target.innerText);
+    
+    // Auto check Grocery Label
+    if(e.target.innerText === 'Groceries') {
+      document.querySelector('.c-expense-list__grocery-flag').checked = true;
+      handleGroceryFlag();
+    }else {
+      document.querySelector('.c-expense-list__grocery-flag').checked = false;
+      setGroceryFlag(false);
+    }
   }
   
   //---------------------------------------------------------------------------------------
